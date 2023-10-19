@@ -6,7 +6,7 @@ const Navbar = dynamic(() => import("@/components/ui/Navbar/Navbar"), {
 
 const TeamMemberHeader = () => {
   const items = [
-    { key: "1", label: "My Profile", href: "/team-member/myProfile" },
+    { key: "1", label: "My Profile", href: "/team-member/my-profile" },
     { key: "2", label: "Dashboard", href: "/team-member/dashboard" },
   ];
   return <Navbar items={items} hasSider />;

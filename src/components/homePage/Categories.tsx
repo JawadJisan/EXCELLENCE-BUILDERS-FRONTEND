@@ -1,5 +1,6 @@
 import CategoryCard from "../common/CategoryCard";
 
+// dsfasd
 // @ts-ignore
 function Categories({ categories }) {
   // console.log("categories:", categories);

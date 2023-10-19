@@ -5,7 +5,7 @@ const Navbar = dynamic(() => import("@/components/ui/Navbar/Navbar"), {
 });
 const SuperAdminHeader = () => {
   const items = [
-    { key: "1", label: "My Profile", href: "/super-admin/myProfile" },
+    { key: "1", label: "My Profile", href: "/super-admin/my-profile" },
     { key: "2", label: "Dashboard", href: "/super-admin/dashboard" },
   ];
   return <Navbar items={items} hasSider />;

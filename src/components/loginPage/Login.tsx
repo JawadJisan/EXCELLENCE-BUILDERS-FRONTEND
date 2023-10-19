@@ -33,16 +33,16 @@ function Login() {
         const { role } = getUserInfo() as any;
         message.success("User logged in successfully");
         if (role === "customer") {
-          router.push("/myProfile");
+          router.push("/my-profile");
         }
         if (role === "admin") {
           router.push("/admin/myProfile");
         }
         if (role === "super_admin") {
-          router.push("/super-admin/myProfile");
+          router.push("/super-admin/my-profile");
         }
         if (role === "team_member") {
-          router.push("/team-member/myProfile");
+          router.push("/team-member/my-profile");
         }
       }
     } catch (error: any) {

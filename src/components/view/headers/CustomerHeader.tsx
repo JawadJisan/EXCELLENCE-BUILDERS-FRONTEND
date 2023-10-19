@@ -12,7 +12,7 @@ const CustomerHeader = () => {
     { key: "4", label: "Feedback", href: "/feedback" },
     // { key: '5', label: 'Blog', href: '/blogs' },
     // { key: '6', label: 'Contact Us', href: '/contact-us' },
-    { key: "7", label: "My Profile", href: "/myProfile" },
+    { key: "7", label: "My Profile", href: "/my-profile" },
   ];
 
   console.log(items);
