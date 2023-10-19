@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import Form from '@/components/ui/Form/Form';
 import FormInput from '@/components/ui/Form/FormInput';
 import FormSelectField from '@/components/ui/Form/FormSelectField';
+import HCLoading from '@/components/ui/Loading/HCLoading';
 import { genderOptions } from '@/constants/global';
 import {
   useProfileQuery,
@@ -19,10 +21,8 @@ function SuperAdminMyProfilePage() {
   const [updateProfile, { isLoading: updateLoading }] =
     useUpdateProfileMutation();
 
-  console.log(data);
-
   const onSubmit = async (values: any) => {
-    if (isLoading) {
+    if (updateLoading) {
       message.loading('Updating.....');
     }
     try {
@@ -45,6 +45,10 @@ function SuperAdminMyProfilePage() {
     profileImageUrl: profileData?.profileImageUrl || '',
     address: profileData?.address || '',
   };
+
+  if (isLoading) {
+    return <HCLoading />;
+  }
   return (
     <div>
       <div className="text-center text-4xl text-teal-700 mt-4">
@@ -52,7 +56,11 @@ function SuperAdminMyProfilePage() {
           Welcome to your profile {profileData?.fullName}
         </h1>
         <div className="w-[150px] h-[150px] bg-teal-500 mx-auto mt-4">
-          Profile image
+          <img
+            src={profileData?.profileImageUrl}
+            alt="avatar"
+            className="w-[150px] h-[150px]"
+          />
         </div>
       </div>
       <div className="px-12 py-6"></div>

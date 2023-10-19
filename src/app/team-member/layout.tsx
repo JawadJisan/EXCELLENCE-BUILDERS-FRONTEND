@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import HCLoading from "@/components/ui/Loading/HCLoading";
-import TeamMemberHeader from "@/components/view/headers/TeamMemberHeader";
-import { getUserInfo, isLoggedIn } from "@/services/auth.service";
-import { IChildrenNode } from "@/types";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
+import HCLoading from '@/components/ui/Loading/HCLoading';
+import TeamMemberHeader from '@/components/view/headers/TeamMemberHeader';
+import { getUserInfo, isLoggedIn } from '@/services/auth.service';
+import { IChildrenNode } from '@/types';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 function TeamMemberLayoutPage({ children }: IChildrenNode) {
   const router = useRouter();
@@ -15,13 +15,13 @@ function TeamMemberLayoutPage({ children }: IChildrenNode) {
   const { role } = getUserInfo() as any;
   const [isLoading, setIsLoading] = useState(false);
 
-  if (role !== "team_member") {
-    router.push("/signin");
+  if (role !== 'team_member') {
+    router.push('/signin');
   }
 
   useEffect(() => {
-    if (!isUserLoggedIn || role !== "team_member") {
-      router.push("/signin");
+    if (!isUserLoggedIn || role !== 'team_member') {
+      router.push('/signin');
     }
     setIsLoading(true);
   }, [isUserLoggedIn, router, role]);
