@@ -2,6 +2,7 @@ import CategoryCard from "../common/CategoryCard";
 
 // @ts-ignore
 function Categories({ categories }) {
+  // console.log("categories:", categories);
   return (
     <section className="block">
       <div className="py-24 md:py-24 lg:pb-32 lg:pt-32 mx-auto w-full max-w-7xl px-5 md:px-10">
