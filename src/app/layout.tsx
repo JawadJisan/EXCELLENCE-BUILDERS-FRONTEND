@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "House Crafters",
+  title: "Excellence Builders",
   description: "Excellience Builder Project it Provides ..",
 };
 
