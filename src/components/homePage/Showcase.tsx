@@ -1,4 +1,4 @@
-import { Image } from 'antd';
+import { Image } from "antd";
 
 function Showcase() {
   return (
@@ -20,70 +20,70 @@ function Showcase() {
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/p3vPxhX/OWR-08-HR.jpg"
                 className="w-full h-[250px]"
               />
             </div>
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/xLT4C9n/image-MC4z-Nzg2-ODMw-MA.jpg"
                 className="w-full h-[250px]"
               />
             </div>
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/Z2wJXB2/Big-Ranch-03-HR.jpg"
                 className="w-full h-[250px]"
               />
             </div>
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/dKwfNjs/image-MC40-NDQ1-Njkw-MA.jpg"
                 className="w-full h-[250px]"
               />
             </div>
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/xJpBG8R/106-PFR-26-LR.jpg"
                 className="w-full h-[250px]"
               />
             </div>
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/ph5nyhZ/moller-20150904-0463-Edit.jpg"
                 className="w-full h-[250px]"
               />
             </div>
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/PxzqztS/Big-Ranch-26-HR.jpg"
                 className="w-full h-[250px]"
               />
             </div>
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/dpr7BpH/OWR-12-LR.jpg"
                 className="w-full h-[250px]"
               />
             </div>
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/v1y5p5K/One-Hope-05.jpg"
                 className="w-full h-[250px]"
               />
             </div>
             <div className="w-full h-[250px]">
               <Image
                 alt="showcase work image"
-                src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+                src="https://i.ibb.co/vktV66g/contractors-in-napa-ca.jpg"
                 className="w-full h-[250px]"
               />
             </div>

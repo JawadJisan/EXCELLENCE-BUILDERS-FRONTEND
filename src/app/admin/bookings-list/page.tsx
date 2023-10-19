@@ -1,37 +1,37 @@
-'use client';
-import { ReloadOutlined } from '@ant-design/icons';
+"use client";
+import { ReloadOutlined } from "@ant-design/icons";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCTable from '@/components/ui/Table/HCTable';
-import { useDebounced } from '@/hooks/useDebounced';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCTable from "@/components/ui/Table/HCTable";
+import { useDebounced } from "@/hooks/useDebounced";
 
-import HCModal from '@/components/ui/Modal/HCModal';
+import HCModal from "@/components/ui/Modal/HCModal";
 import {
   useBookingsQuery,
   useCacelBookingMutation,
   useFinishBookingMutation,
-} from '@/redux/api/bookingApi';
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Input, message } from 'antd';
-import { useState } from 'react';
+} from "@/redux/api/bookingApi";
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Input, message } from "antd";
+import { useState } from "react";
 
 const BookingListPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>('');
-  const [sortOrder, setSortOrder] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const [cancelOpen, setCancelOpen] = useState<boolean>(false);
   const [finishOpen, setFinishOpen] = useState<boolean>(false);
   const [bookingData, setBookingData] = useState<any>(null);
 
-  query['limit'] = size;
-  query['page'] = page;
-  query['sortBy'] = sortBy;
-  query['sortOrder'] = sortOrder;
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
 
   const debouncedTerm = useDebounced({
@@ -40,7 +40,7 @@ const BookingListPage = () => {
   });
 
   if (!!debouncedTerm) {
-    query['searchTerm'] = debouncedTerm;
+    query["searchTerm"] = debouncedTerm;
   }
   const { data, isLoading } = useBookingsQuery({ ...query });
   const [cacelBooking] = useCacelBookingMutation();
@@ -50,7 +50,7 @@ const BookingListPage = () => {
   const meta = data?.meta;
 
   const cancelHandler = async () => {
-    message.loading('Cancelling.....');
+    message.loading("Cancelling.....");
     try {
       console.log(bookingData);
       const data = {
@@ -61,7 +61,7 @@ const BookingListPage = () => {
       const res = await cacelBooking(data);
       if (res) {
         setCancelOpen(false);
-        responseMessage(res, 'Booking cancel Successfully');
+        responseMessage(res, "Booking cancel Successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -70,7 +70,7 @@ const BookingListPage = () => {
   };
 
   const finishHandler = async () => {
-    message.loading('Completing.....');
+    message.loading("Completing.....");
     try {
       console.log(bookingData);
       const data = {
@@ -81,7 +81,7 @@ const BookingListPage = () => {
       const res = await finishBooking(data);
       if (res) {
         setFinishOpen(false);
-        responseMessage(res, 'Booking completed Successfully');
+        responseMessage(res, "Booking completed Successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -91,38 +91,38 @@ const BookingListPage = () => {
 
   const columns = [
     {
-      title: 'Service Name',
-      dataIndex: ['service', 'serviceName'],
+      title: "Service Name",
+      dataIndex: ["service", "serviceName"],
     },
     {
-      title: 'Date',
-      dataIndex: 'date',
+      title: "Date",
+      dataIndex: "date",
     },
     {
-      title: 'Time',
-      dataIndex: ['slot', 'startTime'],
+      title: "Time",
+      dataIndex: ["slot", "startTime"],
     },
     {
-      title: 'User',
-      dataIndex: ['user', 'email'],
+      title: "User",
+      dataIndex: ["user", "email"],
     },
     {
-      title: 'Time',
-      dataIndex: ['slot', 'startTime'],
+      title: "Time",
+      dataIndex: ["slot", "startTime"],
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
+      title: "Status",
+      dataIndex: "status",
     },
 
     {
-      title: 'Action',
+      title: "Action",
       render: function (data: any) {
         return (
           <div className="flex items-center">
             <Button
               style={{
-                margin: '0px 5px',
+                margin: "0px 5px",
               }}
               className="bg-red-700 flex items-center"
               onClick={() => {
@@ -140,7 +140,7 @@ const BookingListPage = () => {
                 setBookingData(data);
               }}
               type="primary"
-              className="flex items-center bg-teal-700"
+              className="flex items-center bg-green-600"
               danger
             >
               Confirm
@@ -159,13 +159,13 @@ const BookingListPage = () => {
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     setSortBy(field as string);
-    setSortOrder(order === 'ascend' ? 'asc' : 'desc');
+    setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
   const resetFilters = () => {
-    setSortBy('');
-    setSortOrder('');
-    setSearchTerm('');
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
   };
 
   return (
@@ -176,7 +176,7 @@ const BookingListPage = () => {
           size="large"
           placeholder="Search..."
           style={{
-            width: '20%',
+            width: "20%",
           }}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -192,8 +192,8 @@ const BookingListPage = () => {
             <Button
               onClick={resetFilters}
               type="primary"
-              style={{ margin: '0px 5px' }}
-              className=" bg-teal-700 flex items-center"
+              style={{ margin: "0px 5px" }}
+              className=" bg-green-600 flex items-center"
             >
               Reset
               <ReloadOutlined />

@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import Form from '@/components/ui/Form/Form';
-import FormInput from '@/components/ui/Form/FormInput';
+import Form from "@/components/ui/Form/Form";
+import FormInput from "@/components/ui/Form/FormInput";
 
-import FormSelectField from '@/components/ui/Form/FormSelectField';
-import { genderOptions } from '@/constants/global';
-import { useAddUserMutation } from '@/redux/api/userApi';
-import { registerSchema } from '@/schemas/register';
-import { responseMessage } from '@/utils/responseMessage';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Col, Row, message } from 'antd';
+import FormSelectField from "@/components/ui/Form/FormSelectField";
+import { genderOptions } from "@/constants/global";
+import { useAddUserMutation } from "@/redux/api/userApi";
+import { registerSchema } from "@/schemas/register";
+import { responseMessage } from "@/utils/responseMessage";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Button, Col, Row, message } from "antd";
 
 const CreateAdminPage = () => {
   const [addUser, { isLoading }] = useAddUserMutation();
 
   const onSubmit = async (data: any) => {
-    message.loading('Creating.....');
+    message.loading("Creating.....");
     try {
-      const res = await addUser({ ...data, role: 'admin' });
+      const res = await addUser({ ...data, role: "admin" });
 
-      responseMessage(res, 'Admin Created Successfully');
+      responseMessage(res, "Admin Created Successfully");
     } catch (err: any) {
       console.log(err);
 
-      message.error(err.message || 'Something went wrong try again');
+      message.error(err.message || "Something went wrong try again");
     }
   };
 
@@ -38,7 +38,7 @@ const CreateAdminPage = () => {
         resolver={yupResolver(registerSchema)}
       >
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -47,7 +47,7 @@ const CreateAdminPage = () => {
               required
             />
           </Col>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -58,7 +58,7 @@ const CreateAdminPage = () => {
           </Col>
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="password"
               size="large"
@@ -68,7 +68,7 @@ const CreateAdminPage = () => {
             />
           </Col>
 
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -79,7 +79,7 @@ const CreateAdminPage = () => {
           </Col>
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormSelectField
               size="large"
               name="gender"
@@ -89,7 +89,7 @@ const CreateAdminPage = () => {
               required
             />
           </Col>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -98,7 +98,7 @@ const CreateAdminPage = () => {
               required
             />
           </Col>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -113,7 +113,7 @@ const CreateAdminPage = () => {
           type="primary"
           htmlType="submit"
           disabled={isLoading}
-          className="bg-teal-700"
+          className="bg-green-600"
         >
           Crate Admin
         </Button>

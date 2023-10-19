@@ -1,14 +1,14 @@
-import { useAddReviewAndRatingMutation } from '@/redux/api/reviewAndRatingApi';
-import { getUserInfo } from '@/services/auth.service';
-import { responseMessage } from '@/utils/responseMessage';
-import { Input, Rate, message } from 'antd';
-import { useState } from 'react';
+import { useAddReviewAndRatingMutation } from "@/redux/api/reviewAndRatingApi";
+import { getUserInfo } from "@/services/auth.service";
+import { responseMessage } from "@/utils/responseMessage";
+import { Input, Rate, message } from "antd";
+import { useState } from "react";
 
 function AddReview({ serviceId }: { serviceId: string }) {
   const [value, setValue] = useState(5);
-  const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
+  const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const { userId } = getUserInfo() as any;
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
   const [addReviewAndRating, { isLoading }] = useAddReviewAndRatingMutation();
 
   const onChange = (
@@ -26,14 +26,14 @@ function AddReview({ serviceId }: { serviceId: string }) {
       review: review,
     };
     console.log(data);
-    message.loading('Adding Review...');
+    message.loading("Adding Review...");
     try {
       const res = await addReviewAndRating(data);
-      responseMessage(res, 'Review added Successfully');
+      responseMessage(res, "Review added Successfully");
     } catch (err: any) {
       console.log(err);
 
-      message.error(err.message || 'Something went wrong try again');
+      message.error(err.message || "Something went wrong try again");
     }
   };
   return (
@@ -56,13 +56,13 @@ function AddReview({ serviceId }: { serviceId: string }) {
             {value ? (
               <span className="ant-rate-text">{desc[value - 1]}</span>
             ) : (
-              ''
+              ""
             )}
           </div>
         </div>
         <button
           type="submit"
-          className="bg-teal-700 px-2 py-1 mt-4 rounded-md text-white"
+          className="bg-green-600 px-2 py-1 mt-4 rounded-md text-white"
         >
           Add Review
         </button>

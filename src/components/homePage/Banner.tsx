@@ -1,15 +1,18 @@
-import { Carousel } from 'antd';
-import Link from 'next/link';
-import './Banner.css';
+import { Carousel } from "antd";
+import Link from "next/link";
+import "./Banner.css";
 
 const HomeBanner = () => (
   <Carousel autoplay>
     <section className="banner banner-one" style={{}}>
       <div className="banner-content">
-        <span>Blooms & Beyond: Elevate Your Garden</span>
+        <span>
+          Harper Construction Company, has a proud tradition of service as a
+          General Contractor since 1974
+        </span>
         <h1>
-          Transform your outdoor space with our expert gardening services and
-          thoughtful landscape designs.
+          Harper Construction Company, headquartered in San Diego, brings over
+          48 years of local and national construction experience; with a
         </h1>
         <Link
           href="/available-services"

@@ -1,36 +1,36 @@
-'use client';
-import { ReloadOutlined } from '@ant-design/icons';
+"use client";
+import { ReloadOutlined } from "@ant-design/icons";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCTable from '@/components/ui/Table/HCTable';
-import { useDebounced } from '@/hooks/useDebounced';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCTable from "@/components/ui/Table/HCTable";
+import { useDebounced } from "@/hooks/useDebounced";
 
-import HCModal from '@/components/ui/Modal/HCModal';
+import HCModal from "@/components/ui/Modal/HCModal";
 import {
   useBookingsQuery,
   useCacelBookingMutation,
-} from '@/redux/api/bookingApi';
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Input, message } from 'antd';
-import { useState } from 'react';
+} from "@/redux/api/bookingApi";
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Input, message } from "antd";
+import { useState } from "react";
 
 const CustomerBookingListPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>('');
-  const [sortOrder, setSortOrder] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const [cancelOpen, setCancelOpen] = useState<boolean>(false);
   const [finishOpen, setFinishOpen] = useState<boolean>(false);
   const [bookingData, setBookingData] = useState<any>(null);
 
-  query['limit'] = size;
-  query['page'] = page;
-  query['sortBy'] = sortBy;
-  query['sortOrder'] = sortOrder;
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
 
   const debouncedTerm = useDebounced({
@@ -39,7 +39,7 @@ const CustomerBookingListPage = () => {
   });
 
   if (!!debouncedTerm) {
-    query['searchTerm'] = debouncedTerm;
+    query["searchTerm"] = debouncedTerm;
   }
   const { data, isLoading } = useBookingsQuery({ ...query });
   const [cacelBooking] = useCacelBookingMutation();
@@ -48,7 +48,7 @@ const CustomerBookingListPage = () => {
   const meta = data?.meta;
 
   const cancelHandler = async () => {
-    message.loading('Cancelling.....');
+    message.loading("Cancelling.....");
     try {
       const data = {
         bookingId: bookingData?.id,
@@ -58,7 +58,7 @@ const CustomerBookingListPage = () => {
       const res = await cacelBooking(data);
       if (res) {
         setCancelOpen(false);
-        responseMessage(res, 'Booking cancel Successfully');
+        responseMessage(res, "Booking cancel Successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -68,48 +68,48 @@ const CustomerBookingListPage = () => {
 
   const columns = [
     {
-      title: 'Service Name',
-      dataIndex: ['service', 'serviceName'],
+      title: "Service Name",
+      dataIndex: ["service", "serviceName"],
     },
     {
-      title: 'Date',
-      dataIndex: 'date',
+      title: "Date",
+      dataIndex: "date",
     },
     {
-      title: 'Time',
-      dataIndex: ['slot', 'startTime'],
-    },
-
-    {
-      title: 'Address',
-      dataIndex: ['user', 'address'],
+      title: "Time",
+      dataIndex: ["slot", "startTime"],
     },
 
     {
-      title: 'Status',
-      dataIndex: 'status',
+      title: "Address",
+      dataIndex: ["user", "address"],
     },
 
     {
-      title: 'Payment Method',
-      dataIndex: ['payment', 'paymentMethod'],
+      title: "Status",
+      dataIndex: "status",
     },
 
     {
-      title: 'Payment Status',
-      dataIndex: ['payment', 'paymentStatus'],
+      title: "Payment Method",
+      dataIndex: ["payment", "paymentMethod"],
     },
 
     {
-      title: 'Action',
+      title: "Payment Status",
+      dataIndex: ["payment", "paymentStatus"],
+    },
+
+    {
+      title: "Action",
       render: function (data: any) {
         return (
           <div className="flex items-center">
-            {data.status === 'rejected' && (
+            {data.status === "rejected" && (
               <Button
                 disabled
                 style={{
-                  margin: '0px 5px',
+                  margin: "0px 5px",
                 }}
                 className="bg-orange-700 flex text-white items-center"
                 onClick={() => {
@@ -121,11 +121,11 @@ const CustomerBookingListPage = () => {
                 Rejected
               </Button>
             )}
-            {data.status === 'confirmed' && (
+            {data.status === "confirmed" && (
               <Button
                 disabled
                 style={{
-                  margin: '0px 5px',
+                  margin: "0px 5px",
                 }}
                 className="bg-green-500 text-white flex items-center"
                 onClick={() => {
@@ -137,10 +137,10 @@ const CustomerBookingListPage = () => {
                 confirmed
               </Button>
             )}
-            {data.status === 'pending' && (
+            {data.status === "pending" && (
               <Button
                 style={{
-                  margin: '0px 5px',
+                  margin: "0px 5px",
                 }}
                 className="bg-red-700 flex items-center"
                 onClick={() => {
@@ -166,13 +166,13 @@ const CustomerBookingListPage = () => {
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     setSortBy(field as string);
-    setSortOrder(order === 'ascend' ? 'asc' : 'desc');
+    setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
   const resetFilters = () => {
-    setSortBy('');
-    setSortOrder('');
-    setSearchTerm('');
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
   };
 
   return (
@@ -183,7 +183,7 @@ const CustomerBookingListPage = () => {
           size="large"
           placeholder="Search..."
           style={{
-            width: '20%',
+            width: "20%",
           }}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -199,8 +199,8 @@ const CustomerBookingListPage = () => {
             <Button
               onClick={resetFilters}
               type="primary"
-              style={{ margin: '0px 5px' }}
-              className=" bg-teal-700 flex items-center"
+              style={{ margin: "0px 5px" }}
+              className=" bg-green-600 flex items-center"
             >
               Reset
               <ReloadOutlined />

@@ -1,37 +1,37 @@
-'use client';
-import { DeleteOutlined, ReloadOutlined } from '@ant-design/icons';
+"use client";
+import { DeleteOutlined, ReloadOutlined } from "@ant-design/icons";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCModal from '@/components/ui/Modal/HCModal';
-import HCTable from '@/components/ui/Table/HCTable';
-import { useDebounced } from '@/hooks/useDebounced';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCModal from "@/components/ui/Modal/HCModal";
+import HCTable from "@/components/ui/Table/HCTable";
+import { useDebounced } from "@/hooks/useDebounced";
 
 import {
   useDeleteReviewAndRatingMutation,
   useReviewAndRatingsQuery,
-} from '@/redux/api/reviewAndRatingApi';
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Input, message } from 'antd';
-import { useState } from 'react';
+} from "@/redux/api/reviewAndRatingApi";
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Input, message } from "antd";
+import { useState } from "react";
 
 const ReviewListPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>('');
-  const [sortOrder, setSortOrder] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [deleteReviewAndRating, { isLoading: deleteLoading }] =
     useDeleteReviewAndRatingMutation();
 
   const [open, setOpen] = useState<boolean>(false);
-  const [blogId, setBlogId] = useState<string>('');
+  const [blogId, setBlogId] = useState<string>("");
 
-  query['limit'] = size;
-  query['page'] = page;
-  query['sortBy'] = sortBy;
-  query['sortOrder'] = sortOrder;
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
 
   const debouncedTerm = useDebounced({
@@ -40,7 +40,7 @@ const ReviewListPage = () => {
   });
 
   if (!!debouncedTerm) {
-    query['searchTerm'] = debouncedTerm;
+    query["searchTerm"] = debouncedTerm;
   }
   const { data, isLoading } = useReviewAndRatingsQuery({ ...query });
 
@@ -48,13 +48,13 @@ const ReviewListPage = () => {
   const meta = data?.meta;
 
   const deleteHandler = async (id: string) => {
-    message.loading('Deleting.....');
+    message.loading("Deleting.....");
     try {
       const res = await deleteReviewAndRating(id);
 
       if (res) {
         setOpen(false);
-        responseMessage(res, 'Review Deleted Successfully');
+        responseMessage(res, "Review Deleted Successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -64,24 +64,24 @@ const ReviewListPage = () => {
 
   const columns = [
     {
-      title: 'User',
-      dataIndex: ['user', 'email'],
+      title: "User",
+      dataIndex: ["user", "email"],
     },
     {
-      title: 'Service',
-      dataIndex: ['service', 'serviceName'],
+      title: "Service",
+      dataIndex: ["service", "serviceName"],
     },
     {
-      title: 'Review',
-      dataIndex: 'review',
+      title: "Review",
+      dataIndex: "review",
     },
     {
-      title: 'Rating',
-      dataIndex: 'rating',
+      title: "Rating",
+      dataIndex: "rating",
     },
 
     {
-      title: 'Action',
+      title: "Action",
       render: function (data: any) {
         return (
           <div className="flex items-center">
@@ -110,13 +110,13 @@ const ReviewListPage = () => {
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     setSortBy(field as string);
-    setSortOrder(order === 'ascend' ? 'asc' : 'desc');
+    setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
   const resetFilters = () => {
-    setSortBy('');
-    setSortOrder('');
-    setSearchTerm('');
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
   };
 
   return (
@@ -127,7 +127,7 @@ const ReviewListPage = () => {
           size="large"
           placeholder="Search..."
           style={{
-            width: '20%',
+            width: "20%",
           }}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -138,8 +138,8 @@ const ReviewListPage = () => {
             <Button
               onClick={resetFilters}
               type="primary"
-              style={{ margin: '0px 5px' }}
-              className=" bg-teal-700 flex items-center"
+              style={{ margin: "0px 5px" }}
+              className=" bg-green-600 flex items-center"
             >
               Reset
               <ReloadOutlined />

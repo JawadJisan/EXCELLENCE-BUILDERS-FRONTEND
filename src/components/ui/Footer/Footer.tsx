@@ -5,13 +5,13 @@ function Footer() {
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-16 lg:py-16">
         <div className="flex flex-col items-center">
           <a href="#" className="text-white text-4xl font-bold">
-            House <span className="text-hcOrange-base">Crafters</span>
+            Excellience <span className="text-hcOrange-base">Builders</span>
           </a>
           <p className="mx-auto mt-4 max-w-[528px] text-center text-[#636262]">
             Lorem ipsum dolor sit amet consectetur adipiscing elit ut
             aliquam,purus sit amet luctus magna fringilla urna
           </p>
-
+          Excellience Builders
           <div className="mt-10 text-center font-semibold">
             <a
               href="#"
@@ -44,7 +44,6 @@ function Footer() {
               Help
             </a>
           </div>
-
           <div className=" mt-10 flex gap-7 px-6 py-2.5">
             <a
               href="#"

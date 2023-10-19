@@ -1,18 +1,18 @@
-'use client';
-import { authKey } from '@/constants/global';
-import { useAppDispatch } from '@/redux/hooks';
-import { showSidebarDrawer } from '@/redux/slices/sidebarSlice';
+"use client";
+import { authKey } from "@/constants/global";
+import { useAppDispatch } from "@/redux/hooks";
+import { showSidebarDrawer } from "@/redux/slices/sidebarSlice";
 import {
   getUserInfo,
   isLoggedIn,
   removeUserInfo,
-} from '@/services/auth.service';
-import { MenuOutlined } from '@ant-design/icons';
-import { Button, Drawer, Layout, Menu, Typography } from 'antd';
+} from "@/services/auth.service";
+import { MenuOutlined } from "@ant-design/icons";
+import { Button, Drawer, Layout, Menu, Typography } from "antd";
 
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -47,7 +47,7 @@ const Navbar = ({
 
   const logOut = () => {
     removeUserInfo(authKey);
-    router.push('/signin');
+    router.push("/signin");
   };
 
   return (
@@ -73,7 +73,7 @@ const Navbar = ({
             <Title
               className={`m-0 text-teal-700 text-lg lg:text-2xl font-bold ${
                 hasSider &&
-                'text-center text-hcGreen-base text-lg lg:text-2xl lg:text-left'
+                "text-center text-hcGreen-base text-lg lg:text-2xl lg:text-left"
               }`}
             >
               House<span className=" text-hcOrange-base">Crafters</span>
@@ -97,7 +97,7 @@ const Navbar = ({
           ))}
           {isUserLoggedIn ? (
             <>
-              {role === 'customer' && (
+              {role === "customer" && (
                 <>
                   <Menu.Item key="/feedback">
                     <Link href="/feedback">Feedback & Faq</Link>
@@ -106,7 +106,35 @@ const Navbar = ({
                     type="primary"
                     size="large"
                     onClick={() => {
-                      router.push('/dashboard');
+                      router.push("/dashboard");
+                    }}
+                    className="ml-6 bg-teal-700 px-6"
+                  >
+                    Dashboard
+                  </Button>
+                </>
+              )}
+              {role === "admin" && (
+                <>
+                  <Button
+                    type="primary"
+                    size="large"
+                    onClick={() => {
+                      router.push("/admin/dashboard");
+                    }}
+                    className="ml-6 bg-teal-700 px-6"
+                  >
+                    Dashboard
+                  </Button>
+                </>
+              )}
+              {role === "super_admin" && (
+                <>
+                  <Button
+                    type="primary"
+                    size="large"
+                    onClick={() => {
+                      router.push("/super-admin/dashboard");
                     }}
                     className="ml-6 bg-teal-700 px-6"
                   >
@@ -129,7 +157,7 @@ const Navbar = ({
                 type="primary"
                 size="large"
                 onClick={() => {
-                  router.push('/signin');
+                  router.push("/signin");
                 }}
                 className="ml-6 bg-hcOrange-base px-6"
               >
@@ -139,7 +167,7 @@ const Navbar = ({
                 type="primary"
                 size="large"
                 onClick={() => {
-                  router.push('/register');
+                  router.push("/register");
                 }}
                 className=" ml-2 bg-hcOrange-base px-6"
               >
@@ -156,7 +184,7 @@ const Navbar = ({
           className="lg:hidden bg-hcOrange-base"
           onClick={showDrawer}
         >
-          <MenuOutlined style={{ verticalAlign: '0rem' }} />
+          <MenuOutlined style={{ verticalAlign: "0rem" }} />
         </Button>
         <Drawer title="Menu" placement="right" onClose={onClose} open={open}>
           <Menu
@@ -184,7 +212,7 @@ const Navbar = ({
                   className="bg-hcOrange-base px-6"
                   type="primary"
                   onClick={() => {
-                    router.push('/signin');
+                    router.push("/signin");
                   }}
                 >
                   Sign In
@@ -192,7 +220,7 @@ const Navbar = ({
                 <Button
                   type="primary"
                   onClick={() => {
-                    router.push('/register');
+                    router.push("/register");
                   }}
                   className="ml-2 bg-hcOrange-base px-6"
                 >

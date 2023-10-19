@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import ServiceCard from '@/components/common/ServiceCard';
-import HCLoading from '@/components/ui/Loading/HCLoading';
-import { useDebounced } from '@/hooks/useDebounced';
-import { useAvailableServicesQuery } from '@/redux/api/availableServiceApi';
-import { useServiceCategoriesQuery } from '@/redux/api/serviceCategoryApi';
-import { getTodaysDate } from '@/utils/getTodaysDate';
-import type { PaginationProps } from 'antd';
-import { Input, InputNumber, Pagination, Select, Space } from 'antd';
-import { useState } from 'react';
+import ServiceCard from "@/components/common/ServiceCard";
+import HCLoading from "@/components/ui/Loading/HCLoading";
+import { useDebounced } from "@/hooks/useDebounced";
+import { useAvailableServicesQuery } from "@/redux/api/availableServiceApi";
+import { useServiceCategoriesQuery } from "@/redux/api/serviceCategoryApi";
+import { getTodaysDate } from "@/utils/getTodaysDate";
+import type { PaginationProps } from "antd";
+import { Input, InputNumber, Pagination, Select, Space } from "antd";
+import { useState } from "react";
 
 const { Search } = Input;
 
@@ -18,26 +18,26 @@ function AvailableServicePage() {
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
 
-  const [minPrice, setMinPrice] = useState<string | number>('');
-  const [maxPrice, setMaxPrice] = useState<string | number>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  const [categoryId, setCategoryId] = useState('');
-  const [reset, setReset] = useState('');
+  const [minPrice, setMinPrice] = useState<string | number>("");
+  const [maxPrice, setMaxPrice] = useState<string | number>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [categoryId, setCategoryId] = useState("");
+  const [reset, setReset] = useState("");
 
-  query['limit'] = size;
-  query['page'] = page;
+  query["limit"] = size;
+  query["page"] = page;
   // query['sortBy'] = sortBy;
   // query['sortOrder'] = sortOrder;
   if (categoryId) {
-    query['categoryId'] = categoryId;
+    query["categoryId"] = categoryId;
   }
   if (minPrice) {
-    query['minPrice'] = minPrice;
+    query["minPrice"] = minPrice;
   }
   if (maxPrice) {
-    query['maxPrice'] = maxPrice;
+    query["maxPrice"] = maxPrice;
   }
-  query['date'] = getTodaysDate();
+  query["date"] = getTodaysDate();
 
   const debouncedTerm = useDebounced({
     searchQuery: searchTerm,
@@ -45,7 +45,7 @@ function AvailableServicePage() {
   });
 
   if (!!debouncedTerm) {
-    query['searchTerm'] = debouncedTerm;
+    query["searchTerm"] = debouncedTerm;
   }
 
   const { data, isLoading } = useAvailableServicesQuery({ ...query });
@@ -83,7 +83,7 @@ function AvailableServicePage() {
     setMaxPrice(v);
   };
 
-  const onChange: PaginationProps['onChange'] = (pageNumber) => {
+  const onChange: PaginationProps["onChange"] = (pageNumber) => {
     setPage(pageNumber);
   };
 
@@ -148,7 +148,7 @@ function AvailableServicePage() {
               onClick={resetFilters}
               type="primary"
               style={{ margin: '0px 5px' }}
-              className=" bg-teal-700 flex items-center max-w-[80px]"
+              className=" bg-green-600 flex items-center max-w-[80px]"
             >
               Reset
               <ReloadOutlined />

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { genderOptions } from '@/constants/global';
-import { Col, Row } from 'antd';
-import { useRouter } from 'next/navigation';
-import { SubmitHandler } from 'react-hook-form';
-import Form from '../ui/Form/Form';
-import FormSelectField from '../ui/Form/FormSelectField';
+import { genderOptions } from "@/constants/global";
+import { Col, Row } from "antd";
+import { useRouter } from "next/navigation";
+import { SubmitHandler } from "react-hook-form";
+import Form from "../ui/Form/Form";
+import FormSelectField from "../ui/Form/FormSelectField";
 
 type FormValues = {
   fullName: string;
@@ -44,8 +44,8 @@ function BookForm() {
                 xs={32}
                 sm={32}
                 style={{
-                  marginBottom: '10px',
-                  minWidth: '350px',
+                  marginBottom: "10px",
+                  minWidth: "350px",
                 }}
               >
                 <FormSelectField
@@ -61,7 +61,7 @@ function BookForm() {
 
             <button
               type="submit"
-              className=" w-full mt-4 py-2 rounded-md text-white text-lg bg-teal-700"
+              className=" w-full mt-4 py-2 rounded-md text-white text-lg bg-green-600"
             >
               Book Service
             </button>

@@ -2,7 +2,7 @@ function CallToAction() {
   return (
     <div>
       <section className="bg-teal-800 ">
-        <div className="mx-auto w-full max-w-7xl bg-teal-800  text-white">
+        <div className="mx-auto w-full max-w-7xl bg-green-600  text-white">
           <div className="mx-auto w-full max-w-3xl py-16 text-center md:py-24 lg:py-32">
             <div className="mb-6 flex-col md:mb-10 lg:mb-12">
               <h2 className="mb-8 text-3xl font-bold md:text-5xl">

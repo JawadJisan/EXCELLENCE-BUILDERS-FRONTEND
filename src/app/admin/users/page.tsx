@@ -1,31 +1,31 @@
-'use client';
-import { EditOutlined, ReloadOutlined } from '@ant-design/icons';
+"use client";
+import { EditOutlined, ReloadOutlined } from "@ant-design/icons";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCTable from '@/components/ui/Table/HCTable';
-import { useDebounced } from '@/hooks/useDebounced';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCTable from "@/components/ui/Table/HCTable";
+import { useDebounced } from "@/hooks/useDebounced";
 
-import { useUsersQuery } from '@/redux/api/userApi';
-import { Button, Input } from 'antd';
-import Link from 'next/link';
-import { useState } from 'react';
+import { useUsersQuery } from "@/redux/api/userApi";
+import { Button, Input } from "antd";
+import Link from "next/link";
+import { useState } from "react";
 
 const UsersListPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>('');
-  const [sortOrder, setSortOrder] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const [open, setOpen] = useState<boolean>(false);
-  const [serviceId, setServiceId] = useState<string>('');
+  const [serviceId, setServiceId] = useState<string>("");
 
-  query['limit'] = size;
-  query['page'] = page;
-  query['sortBy'] = sortBy;
-  query['sortOrder'] = sortOrder;
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
 
   const debouncedTerm = useDebounced({
@@ -34,7 +34,7 @@ const UsersListPage = () => {
   });
 
   if (!!debouncedTerm) {
-    query['searchTerm'] = debouncedTerm;
+    query["searchTerm"] = debouncedTerm;
   }
 
   const { data, isLoading } = useUsersQuery({ ...query });
@@ -44,41 +44,41 @@ const UsersListPage = () => {
 
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'fullName',
+      title: "Name",
+      dataIndex: "fullName",
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
+      title: "Email",
+      dataIndex: "email",
     },
     {
-      title: 'Gender',
-      dataIndex: 'gender',
+      title: "Gender",
+      dataIndex: "gender",
     },
     {
-      title: 'Role',
-      dataIndex: 'role',
+      title: "Role",
+      dataIndex: "role",
     },
     {
-      title: 'Phone',
-      dataIndex: 'contactNumber',
+      title: "Phone",
+      dataIndex: "contactNumber",
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
+      title: "Address",
+      dataIndex: "address",
     },
 
     {
-      title: 'Action',
+      title: "Action",
       render: function (data: any) {
         return (
           <div className="flex items-center">
             <Link href={`/admin/users/update/${data?.id}`}>
               <Button
                 style={{
-                  margin: '0px 5px',
+                  margin: "0px 5px",
                 }}
-                className="bg-teal-700 flex items-center"
+                className="bg-green-600 flex items-center"
                 onClick={() => console.log(data)}
                 type="primary"
               >
@@ -99,13 +99,13 @@ const UsersListPage = () => {
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     setSortBy(field as string);
-    setSortOrder(order === 'ascend' ? 'asc' : 'desc');
+    setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
   const resetFilters = () => {
-    setSortBy('');
-    setSortOrder('');
-    setSearchTerm('');
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
   };
 
   return (
@@ -116,7 +116,7 @@ const UsersListPage = () => {
           size="large"
           placeholder="Search..."
           style={{
-            width: '20%',
+            width: "20%",
           }}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -132,8 +132,8 @@ const UsersListPage = () => {
             <Button
               onClick={resetFilters}
               type="primary"
-              style={{ margin: '0px 5px' }}
-              className=" bg-teal-700 flex items-center"
+              style={{ margin: "0px 5px" }}
+              className=" bg-green-600 flex items-center"
             >
               Reset
               <ReloadOutlined />

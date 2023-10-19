@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCBreadCrumbs from '@/components/ui/BreadCrumbs/HCBreadCrumb';
-import Form from '@/components/ui/Form/Form';
-import FormInput from '@/components/ui/Form/FormInput';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCBreadCrumbs from "@/components/ui/BreadCrumbs/HCBreadCrumb";
+import Form from "@/components/ui/Form/Form";
+import FormInput from "@/components/ui/Form/FormInput";
 import {
   useSpecializationQuery,
   useUpdateSpecializationMutation,
-} from '@/redux/api/specializationApi';
+} from "@/redux/api/specializationApi";
 
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Col, Row, message } from 'antd';
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Col, Row, message } from "antd";
 
 type IDProps = {
   params: any;
@@ -25,12 +25,12 @@ const SpecializationUpdatePage = ({ params }: IDProps) => {
 
   const onSubmit = async (values: { title: string }) => {
     if (isLoading) {
-      message.loading('Updating.....');
+      message.loading("Updating.....");
     }
     try {
       //   console.log(data);
       const res = await updateSpecialization({ id, body: values });
-      responseMessage(res, 'Specialization updated successfully');
+      responseMessage(res, "Specialization updated successfully");
     } catch (err: any) {
       //   console.error(err.message);
       message.error(err.message);
@@ -39,8 +39,8 @@ const SpecializationUpdatePage = ({ params }: IDProps) => {
 
   // @ts-ignore
   const defaultValues = {
-    title: data?.data?.title || '',
-    description: data?.data?.description || '',
+    title: data?.data?.title || "",
+    description: data?.data?.description || "",
   };
 
   return (
@@ -48,8 +48,8 @@ const SpecializationUpdatePage = ({ params }: IDProps) => {
       <HCBreadCrumbs
         items={[
           {
-            label: 'Specialization List',
-            link: '/admin/specialization',
+            label: "Specialization List",
+            link: "/admin/specialization",
           },
         ]}
       />
@@ -57,12 +57,12 @@ const SpecializationUpdatePage = ({ params }: IDProps) => {
       <ActionBar title="Update Specialization"> </ActionBar>
       <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput name="title" label="Specialization Name" />
           </Col>
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput name="description" label="Specialization Description" />
           </Col>
         </Row>
@@ -71,7 +71,7 @@ const SpecializationUpdatePage = ({ params }: IDProps) => {
           type="primary"
           htmlType="submit"
           disabled={updateLoading}
-          className="bg-teal-700"
+          className="bg-green-600"
         >
           Update
         </Button>

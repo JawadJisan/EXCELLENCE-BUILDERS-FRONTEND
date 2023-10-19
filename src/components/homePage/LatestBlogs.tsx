@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import BlogCard from '../common/BlogCard';
+import Link from "next/link";
+import BlogCard from "../common/BlogCard";
 
 // @ts-ignore
 function LatestBlogs({ blogs }) {
@@ -27,7 +27,7 @@ function LatestBlogs({ blogs }) {
             </div>
             <Link
               href="/blogs"
-              className="inline-block items-center bg-teal-700 px-6 py-3 text-center font-semibold text-white"
+              className="inline-block items-center bg-green-600 px-6 py-3 text-center font-semibold text-white"
             >
               View More
             </Link>

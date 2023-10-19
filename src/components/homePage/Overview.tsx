@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 function Overview() {
   return (
@@ -9,19 +9,18 @@ function Overview() {
           <div className="mx-auto max-w-[1000px] text-center">
             <div className="text-center">
               <h1 className="font-bold mb-8 text-4xl md:text-6xl text-teal-950">
-                Your Home, Our Priority: A Holistic Overview
+                We Take Pride In The Projects We have Done
               </h1>
               <div className="text-center mb-5 md:mb-6 lg:mb-8">
                 <p className="text-[#636262] text-sm sm:text-xl">
-                  Crafting Unmatched House Servicing Experiences Tailored to
-                  you. Discover a world of excellence in house servicing - where
-                  quality meets care, and your house well-being is our ultimate
-                  commitment. From pristine gardens to sturdy roofs, we
-                  transform spaces into havens. Embark a journey with us where
-                  attention to deatail meets unwavering dedication. Our
-                  comprehensive house servicing solutions redefine excellence,
-                  ensuring your home thrives in beauty, functionality and
-                  lasting quality.
+                  While our clients’ satisfaction is our primary metric for
+                  excellence, we have also been recognized with numerous awards
+                  over the years for safety, business practices, and design
+                  excellence. We are proud to be at the forefront of green
+                  building practices, with dozens of LEED-certified projects,
+                  many achieving silver, gold and even platinum LEED
+                  certification. We understand that projects represent not only
+                  buildings, but the plans for the future of our clients
                 </p>
               </div>
               <div className="flex items-stretch justify-center">

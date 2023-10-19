@@ -1,26 +1,26 @@
-'use client';
+"use client";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import Form from '@/components/ui/Form/Form';
-import FormSelectField from '@/components/ui/Form/FormSelectField';
-import ServiceField from '@/components/ui/Form/ServiceField';
-import { booleanOptions } from '@/constants/global';
-import { useAddAvailableServiceMutation } from '@/redux/api/availableServiceApi';
-import { useAddSlotMutation } from '@/redux/api/slotsApi';
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Col, Row, message } from 'antd';
-import { revalidateTag } from 'next/cache';
-import HCBreadCrumbs from '../../../../components/ui/BreadCrumbs/HCBreadCrumb';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import Form from "@/components/ui/Form/Form";
+import FormSelectField from "@/components/ui/Form/FormSelectField";
+import ServiceField from "@/components/ui/Form/ServiceField";
+import { booleanOptions } from "@/constants/global";
+import { useAddAvailableServiceMutation } from "@/redux/api/availableServiceApi";
+import { useAddSlotMutation } from "@/redux/api/slotsApi";
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Col, Row, message } from "antd";
+import { revalidateTag } from "next/cache";
+import HCBreadCrumbs from "../../../../components/ui/BreadCrumbs/HCBreadCrumb";
 
 const CreateAvailableServicePage = () => {
   const [addAvailableService, { isLoading }] = useAddAvailableServiceMutation();
   const [addSlot, { isLoading: slotLoading }] = useAddSlotMutation();
 
   const onSubmit = async (data: any) => {
-    message.loading('Creating.....');
+    message.loading("Creating.....");
     try {
-      const updatedIsFeatured = data.isFeatured === 'true' ? true : false;
-      const updatedIsAvailable = data.isAvailable === 'true' ? true : false;
+      const updatedIsFeatured = data.isFeatured === "true" ? true : false;
+      const updatedIsAvailable = data.isAvailable === "true" ? true : false;
 
       const updatedData = {
         ...data,
@@ -29,21 +29,21 @@ const CreateAvailableServicePage = () => {
       };
 
       const res = await addAvailableService(updatedData);
-      revalidateTag('availableServices');
-      responseMessage(res, 'Available service created Successfully');
+      revalidateTag("availableServices");
+      responseMessage(res, "Available service created Successfully");
     } catch (err: any) {
       console.log(err);
 
-      message.error(err.message || 'Something went wrong try again');
+      message.error(err.message || "Something went wrong try again");
     }
   };
-  const base = 'admin';
+  const base = "admin";
   return (
     <div className="px-12 py-6">
       <HCBreadCrumbs
         items={[
           {
-            label: 'Available Service List',
+            label: "Available Service List",
             link: `/${base}/available-service`,
           },
         ]}
@@ -51,12 +51,12 @@ const CreateAvailableServicePage = () => {
       <ActionBar title="Create Available Service"></ActionBar>
       <Form submitHandler={onSubmit}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <ServiceField name="serviceId" label="Select Service" />
           </Col>
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormSelectField
               size="large"
               name="isFeatured"
@@ -67,7 +67,7 @@ const CreateAvailableServicePage = () => {
           </Col>
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormSelectField
               size="large"
               name="isAvailable"
@@ -81,7 +81,7 @@ const CreateAvailableServicePage = () => {
           type="primary"
           htmlType="submit"
           disabled={isLoading}
-          className="bg-teal-700"
+          className="bg-green-600"
         >
           add
         </Button>

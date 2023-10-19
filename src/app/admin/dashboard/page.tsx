@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 function AdminDashboardPage() {
   return (
@@ -9,7 +9,7 @@ function AdminDashboardPage() {
         </h1>
         <Link
           href="/admin/myProfile"
-          className="px-12 py-3 mt-4 bg-teal-700 text-white rounded-md"
+          className="px-12 py-3 mt-4 bg-green-600 text-white rounded-md"
         >
           Your Profile
         </Link>

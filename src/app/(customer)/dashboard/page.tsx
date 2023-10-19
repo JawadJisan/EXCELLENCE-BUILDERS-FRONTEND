@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 function CustomerDashboardHomePage() {
   return (
@@ -8,8 +8,8 @@ function CustomerDashboardHomePage() {
           Welcome to your Dashboard
         </h1>
         <Link
-          href="/my-profile"
-          className="px-12 py-3 mt-4 bg-teal-700 text-white rounded-md"
+          href="/myProfile"
+          className="px-12 py-3 mt-4 bg-green-600 text-white rounded-md"
         >
           Your Profile
         </Link>

@@ -15,13 +15,14 @@ function OurMisson() {
                 Our Mission
               </h2>
               <p className="flex-col text-[#808080] max-[479px]:text-sm">
-                {' '}
-                At House Crafters, our mission is to transcend the conventional
-                boundaries of house servicing. We aspire to be more than just a
-                service provider; we aim to be the architects of transformative
-                living experiences. Our mission begins with a commitment to
-                excellence. We set and maintain high standards in every aspect
-                of our work, from the smallest detail to the grandest design.
+                {" "}
+                At Excellience Builders, our mission is to transcend the
+                conventional boundaries of house servicing. We aspire to be more
+                than just a service provider; we aim to be the architects of
+                transformative living experiences. Our mission begins with a
+                commitment to excellence. We set and maintain high standards in
+                every aspect of our work, from the smallest detail to the
+                grandest design.
                 <br />
                 <br />
                 We believe that innovation is the heartbeat of progress. Our

@@ -1,12 +1,12 @@
-import { useAddFeedbackMutation } from '@/redux/api/feedbackApi';
-import { getUserInfo } from '@/services/auth.service';
-import { responseMessage } from '@/utils/responseMessage';
-import { message } from 'antd';
-import { useState } from 'react';
+import { useAddFeedbackMutation } from "@/redux/api/feedbackApi";
+import { getUserInfo } from "@/services/auth.service";
+import { responseMessage } from "@/utils/responseMessage";
+import { message } from "antd";
+import { useState } from "react";
 
 function AddFeedback() {
   const { userId } = getUserInfo() as any;
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
   const [addFeedback, { isLoading }] = useAddFeedbackMutation();
 
   const onChange = (
@@ -22,21 +22,21 @@ function AddFeedback() {
       comment: review,
     };
     console.log(data);
-    message.loading('Adding Review...');
+    message.loading("Adding Review...");
     try {
       const res = await addFeedback(data);
-      setReview('');
-      responseMessage(res, 'Feedback added Successfully');
+      setReview("");
+      responseMessage(res, "Feedback added Successfully");
     } catch (err: any) {
       console.log(err);
 
-      message.error(err.message || 'Something went wrong try again');
+      message.error(err.message || "Something went wrong try again");
     }
   };
   return (
     <div>
       <form
-        className=" max-w-[700px] mx-auto bg-teal-700 p-8 rounded-md text-center py-16"
+        className=" max-w-[700px] mx-auto bg-green-600 p-8 rounded-md text-center py-16"
         onSubmit={onSubmit}
       >
         <div>

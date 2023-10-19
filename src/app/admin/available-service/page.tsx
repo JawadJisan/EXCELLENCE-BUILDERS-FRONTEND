@@ -1,28 +1,28 @@
-'use client';
-import { EditOutlined, ReloadOutlined } from '@ant-design/icons';
+"use client";
+import { EditOutlined, ReloadOutlined } from "@ant-design/icons";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCTable from '@/components/ui/Table/HCTable';
-import { useDebounced } from '@/hooks/useDebounced';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCTable from "@/components/ui/Table/HCTable";
+import { useDebounced } from "@/hooks/useDebounced";
 
-import { useAvailableServicesQuery } from '@/redux/api/availableServiceApi';
-import { Button, Input } from 'antd';
-import Link from 'next/link';
-import { useState } from 'react';
+import { useAvailableServicesQuery } from "@/redux/api/availableServiceApi";
+import { Button, Input } from "antd";
+import Link from "next/link";
+import { useState } from "react";
 
 const AvailableServiceListPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>('');
-  const [sortOrder, setSortOrder] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
-  query['limit'] = size;
-  query['page'] = page;
-  query['sortBy'] = sortBy;
-  query['sortOrder'] = sortOrder;
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
 
   const debouncedTerm = useDebounced({
@@ -31,7 +31,7 @@ const AvailableServiceListPage = () => {
   });
 
   if (!!debouncedTerm) {
-    query['searchTerm'] = debouncedTerm;
+    query["searchTerm"] = debouncedTerm;
   }
   const { data, isLoading } = useAvailableServicesQuery({ ...query });
 
@@ -40,64 +40,64 @@ const AvailableServiceListPage = () => {
 
   const columns = [
     {
-      title: 'Service Name',
-      dataIndex: 'serviceName',
+      title: "Service Name",
+      dataIndex: "serviceName",
     },
     {
-      title: 'Category',
-      dataIndex: ['service', 'serviceCategory', 'categoryName'],
+      title: "Category",
+      dataIndex: ["service", "serviceCategory", "categoryName"],
     },
     {
-      title: 'Price',
-      dataIndex: 'price',
+      title: "Price",
+      dataIndex: "price",
     },
     {
-      title: 'Featured',
-      dataIndex: 'isFeatured',
+      title: "Featured",
+      dataIndex: "isFeatured",
       render: function (data: any) {
         let value;
         if (data === true) {
-          value = 'YES';
+          value = "YES";
         } else {
-          value = 'NO';
+          value = "NO";
         }
 
         return value;
       },
     },
     {
-      title: 'Available',
-      dataIndex: 'isAvailable',
+      title: "Available",
+      dataIndex: "isAvailable",
       render: function (data: any) {
         let value;
         if (data === true) {
-          value = 'YES';
+          value = "YES";
         } else {
-          value = 'NO';
+          value = "NO";
         }
 
         return value;
       },
     },
     {
-      title: 'Slots',
-      dataIndex: 'slots',
+      title: "Slots",
+      dataIndex: "slots",
       render: function (data: any) {
         return data.length;
       },
     },
 
     {
-      title: 'Action',
+      title: "Action",
       render: function (data: any) {
         return (
           <div className="flex items-center">
             <Link href={`/admin/available-service/update/${data?.id}`}>
               <Button
                 style={{
-                  margin: '0px 5px',
+                  margin: "0px 5px",
                 }}
-                className="bg-teal-700 flex items-center"
+                className="bg-green-600 flex items-center"
                 onClick={() => console.log(data)}
                 type="primary"
               >
@@ -118,13 +118,13 @@ const AvailableServiceListPage = () => {
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     setSortBy(field as string);
-    setSortOrder(order === 'ascend' ? 'asc' : 'desc');
+    setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
   const resetFilters = () => {
-    setSortBy('');
-    setSortOrder('');
-    setSearchTerm('');
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
   };
 
   return (
@@ -135,7 +135,7 @@ const AvailableServiceListPage = () => {
           size="large"
           placeholder="Search..."
           style={{
-            width: '20%',
+            width: "20%",
           }}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -151,8 +151,8 @@ const AvailableServiceListPage = () => {
             <Button
               onClick={resetFilters}
               type="primary"
-              style={{ margin: '0px 5px' }}
-              className=" bg-teal-700 flex items-center"
+              style={{ margin: "0px 5px" }}
+              className=" bg-green-600 flex items-center"
             >
               Reset
               <ReloadOutlined />

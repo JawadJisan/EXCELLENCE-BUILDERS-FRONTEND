@@ -1,39 +1,39 @@
-'use client';
+"use client";
 import {
   DeleteOutlined,
   EditOutlined,
   ReloadOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCTable from '@/components/ui/Table/HCTable';
-import { useDebounced } from '@/hooks/useDebounced';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCTable from "@/components/ui/Table/HCTable";
+import { useDebounced } from "@/hooks/useDebounced";
 
-import HCModal from '@/components/ui/Modal/HCModal';
+import HCModal from "@/components/ui/Modal/HCModal";
 
-import { useDeleteFaqMutation, useFaqsQuery } from '@/redux/api/faqApi';
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Input, message } from 'antd';
-import dayjs from 'dayjs';
-import Link from 'next/link';
-import { useState } from 'react';
+import { useDeleteFaqMutation, useFaqsQuery } from "@/redux/api/faqApi";
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Input, message } from "antd";
+import dayjs from "dayjs";
+import Link from "next/link";
+import { useState } from "react";
 
 const FaqListPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>('');
-  const [sortOrder, setSortOrder] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [deleteFaq, { isLoading: deleteLoading }] = useDeleteFaqMutation();
   const [open, setOpen] = useState<boolean>(false);
-  const [faqId, setFaqId] = useState<string>('');
+  const [faqId, setFaqId] = useState<string>("");
 
-  query['limit'] = size;
-  query['page'] = page;
-  query['sortBy'] = sortBy;
-  query['sortOrder'] = sortOrder;
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
 
   const debouncedTerm = useDebounced({
@@ -42,7 +42,7 @@ const FaqListPage = () => {
   });
 
   if (!!debouncedTerm) {
-    query['searchTerm'] = debouncedTerm;
+    query["searchTerm"] = debouncedTerm;
   }
   const { data, isLoading } = useFaqsQuery({ ...query });
 
@@ -50,13 +50,13 @@ const FaqListPage = () => {
   const meta = data?.meta;
 
   const deleteHandler = async (id: string) => {
-    message.loading('Deleting.....');
+    message.loading("Deleting.....");
     try {
       const res = await deleteFaq(id);
 
       if (res) {
         setOpen(false);
-        responseMessage(res, 'Faq Deleted Successfully');
+        responseMessage(res, "Faq Deleted Successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -66,32 +66,32 @@ const FaqListPage = () => {
 
   const columns = [
     {
-      title: 'Question',
-      dataIndex: 'question',
+      title: "Question",
+      dataIndex: "question",
     },
     {
-      title: 'Answer',
-      dataIndex: 'answer',
+      title: "Answer",
+      dataIndex: "answer",
     },
     {
-      title: 'CreatedAt',
-      dataIndex: 'createdAt',
+      title: "CreatedAt",
+      dataIndex: "createdAt",
       render: function (data: any) {
-        return data && dayjs(data).format('MMM D, YYYY hh:mm A');
+        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
       },
       sorter: true,
     },
     {
-      title: 'Action',
+      title: "Action",
       render: function (data: any) {
         return (
           <div className="flex items-center">
             <Link href={`/admin/faq/update/${data?.id}`}>
               <Button
                 style={{
-                  margin: '0px 5px',
+                  margin: "0px 5px",
                 }}
-                className="bg-teal-700 flex items-center"
+                className="bg-green-600 flex items-center"
                 type="primary"
               >
                 <EditOutlined />
@@ -122,13 +122,13 @@ const FaqListPage = () => {
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     setSortBy(field as string);
-    setSortOrder(order === 'ascend' ? 'asc' : 'desc');
+    setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
   const resetFilters = () => {
-    setSortBy('');
-    setSortOrder('');
-    setSearchTerm('');
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
   };
 
   return (
@@ -139,7 +139,7 @@ const FaqListPage = () => {
           size="large"
           placeholder="Search..."
           style={{
-            width: '20%',
+            width: "20%",
           }}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -155,8 +155,8 @@ const FaqListPage = () => {
             <Button
               onClick={resetFilters}
               type="primary"
-              style={{ margin: '0px 5px' }}
-              className=" bg-teal-700 flex items-center"
+              style={{ margin: "0px 5px" }}
+              className=" bg-green-600 flex items-center"
             >
               Reset
               <ReloadOutlined />

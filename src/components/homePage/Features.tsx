@@ -9,8 +9,8 @@ function Features() {
           </h2>
           <div className="mx-auto mb-8 mt-4 max-w-[528px] md:mb-12 lg:mb-16">
             <p className="text-hcOrange-base font-bold">
-              Discover the Pillars of Excellence Defining Our House Servicing
-              Solutions
+              Discover the Pillars of Excellence Defining Our Excellience
+              Builders Solutions
             </p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import Link from 'next/link';
+import Link from "next/link";
 
 /* eslint-disable @next/next/no-img-element */
 function AboutUsSection() {
@@ -14,7 +14,7 @@ function AboutUsSection() {
                 About us
               </h2>
               <p className="max-[479px]:text-sm">
-                At House Crafters, we're not just in the business of house
+                At Excellience Builders, we're not just in the business of house
                 servicing; we're in the business of transforming spaces and
                 enriching lives. Founded in 2020, our journey is woven with a
                 passion for craftsmanship, a commitment to innovation, and an
@@ -25,16 +25,16 @@ function AboutUsSection() {
                 successful projects, satisfied clients, and a continuous pursuit
                 of excellence. We believe that a home is more than bricks and
                 mortar; it's a canvas for personal expression and cherished
-                moments. Every project at [Your Company Name] is approached with
-                an artist's eye, a technician's precision, and a homeowner's
-                understanding. We don't just build or renovate; we craft
-                experiences that resonate with the soul of the dwellers.
+                moments. Every project at Excellience Builders is approached
+                with an artist's eye, a technician's precision, and a
+                homeowner's understanding. We don't just build or renovate; we
+                craft experiences that resonate with the soul of the dwellers.
               </p>
             </div>
             <div className="flex items-center justify-start gap-4 flex-wrap">
               <Link
                 href="/available-services"
-                className="inline-block items-center bg-teal-700 px-6 py-3 text-center font-semibold text-white"
+                className="inline-block items-center bg-green-600 px-6 py-3 text-center font-semibold text-white"
               >
                 Our Services
               </Link>
@@ -43,7 +43,7 @@ function AboutUsSection() {
 
           <div className="block overflow-hidden bg-teal-50 max-[991px]:h-[475px] rounded-md w-full lg:w-[30%]">
             <img
-              src="https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg"
+              src="https://i.ibb.co/vktV66g/contractors-in-napa-ca.jpg"
               alt=""
               className="h-full"
             />

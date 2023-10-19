@@ -1,18 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
+"use client";
 
-import Form from '@/components/ui/Form/Form';
-import FormInput from '@/components/ui/Form/FormInput';
-import FormSelectField from '@/components/ui/Form/FormSelectField';
-import HCLoading from '@/components/ui/Loading/HCLoading';
-import { genderOptions } from '@/constants/global';
+import Form from "@/components/ui/Form/Form";
+import FormInput from "@/components/ui/Form/FormInput";
+import FormSelectField from "@/components/ui/Form/FormSelectField";
+import HCLoading from "@/components/ui/Loading/HCLoading";
+import { genderOptions } from "@/constants/global";
 import {
   useProfileQuery,
   useUpdateProfileMutation,
-} from '@/redux/api/profileApi';
+} from "@/redux/api/profileApi";
 
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Col, Row, message } from 'antd';
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Col, Row, message } from "antd";
 
 function CustomerMyProfilePage() {
   // @ts-ignore
@@ -23,12 +23,12 @@ function CustomerMyProfilePage() {
 
   const onSubmit = async (values: any) => {
     if (updateLoading) {
-      message.loading('Updating.....');
+      message.loading("Updating.....");
     }
     try {
       //   console.log(data);
       const res = await updateProfile({ body: values });
-      responseMessage(res, 'Profile updated successfully');
+      responseMessage(res, "Profile updated successfully");
     } catch (err: any) {
       //   console.error(err.message);
       message.error(err.message);
@@ -37,13 +37,13 @@ function CustomerMyProfilePage() {
 
   // @ts-ignore
   const defaultValues = {
-    fullName: profileData?.fullName || '',
-    email: profileData?.email || '',
-    password: profileData?.password || '',
-    contactNumber: profileData?.contactNumber || '',
-    gender: profileData?.gender || '',
-    profileImageUrl: profileData?.profileImageUrl || '',
-    address: profileData?.address || '',
+    fullName: profileData?.fullName || "",
+    email: profileData?.email || "",
+    password: profileData?.password || "",
+    contactNumber: profileData?.contactNumber || "",
+    gender: profileData?.gender || "",
+    profileImageUrl: profileData?.profileImageUrl || "",
+    address: profileData?.address || "",
   };
 
   if (isLoading) {
@@ -67,7 +67,7 @@ function CustomerMyProfilePage() {
       <div className="px-12 py-6"></div>
       <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -76,7 +76,7 @@ function CustomerMyProfilePage() {
               required
             />
           </Col>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -85,7 +85,7 @@ function CustomerMyProfilePage() {
               required
             />
           </Col>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -105,7 +105,7 @@ function CustomerMyProfilePage() {
           </Col> */}
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormSelectField
               size="large"
               name="gender"
@@ -115,7 +115,7 @@ function CustomerMyProfilePage() {
               required
             />
           </Col>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -124,7 +124,7 @@ function CustomerMyProfilePage() {
               required
             />
           </Col>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput
               type="text"
               size="large"
@@ -139,7 +139,7 @@ function CustomerMyProfilePage() {
           type="primary"
           htmlType="submit"
           disabled={updateLoading}
-          className="bg-teal-700"
+          className="bg-green-600"
         >
           Update
         </Button>

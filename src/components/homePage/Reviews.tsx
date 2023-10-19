@@ -1,4 +1,4 @@
-import ClientReviewCard from '../common/ClientReviewCard';
+import ClientReviewCard from "../common/ClientReviewCard";
 
 /* eslint-disable react/no-unescaped-entities */
 function Reviews() {
@@ -22,6 +22,7 @@ function Reviews() {
             </a>
           </div> */}
         </div>
+        Excellience Builders
       </section>
     </div>
   );

@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCBreadCrumbs from '@/components/ui/BreadCrumbs/HCBreadCrumb';
-import Form from '@/components/ui/Form/Form';
-import FormInput from '@/components/ui/Form/FormInput';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCBreadCrumbs from "@/components/ui/BreadCrumbs/HCBreadCrumb";
+import Form from "@/components/ui/Form/Form";
+import FormInput from "@/components/ui/Form/FormInput";
 import {
   useServiceTeamQuery,
   useUpdateServiceTeamMutation,
-} from '@/redux/api/serviceTeamApi';
+} from "@/redux/api/serviceTeamApi";
 
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Col, Row, message } from 'antd';
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Col, Row, message } from "antd";
 
 type IDProps = {
   params: any;
@@ -25,12 +25,12 @@ const ServiceTeamUpdatePage = ({ params }: IDProps) => {
 
   const onSubmit = async (values: { title: string }) => {
     if (isLoading) {
-      message.loading('Updating.....');
+      message.loading("Updating.....");
     }
     try {
       //   console.log(data);
       const res = await updateServiceTeam({ id, body: values });
-      responseMessage(res, 'Service Team updated successfully');
+      responseMessage(res, "Service Team updated successfully");
     } catch (err: any) {
       //   console.error(err.message);
       message.error(err.message);
@@ -39,7 +39,7 @@ const ServiceTeamUpdatePage = ({ params }: IDProps) => {
 
   // @ts-ignore
   const defaultValues = {
-    teamName: data?.data?.teamName || '',
+    teamName: data?.data?.teamName || "",
   };
 
   return (
@@ -47,8 +47,8 @@ const ServiceTeamUpdatePage = ({ params }: IDProps) => {
       <HCBreadCrumbs
         items={[
           {
-            label: 'Team List',
-            link: '/admin/ServiceTeam',
+            label: "Team List",
+            link: "/admin/ServiceTeam",
           },
         ]}
       />
@@ -56,7 +56,7 @@ const ServiceTeamUpdatePage = ({ params }: IDProps) => {
       <ActionBar title="Update Service Team"> </ActionBar>
       <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput name="teamName" label="Service Team Name" />
           </Col>
         </Row>
@@ -65,7 +65,7 @@ const ServiceTeamUpdatePage = ({ params }: IDProps) => {
           type="primary"
           htmlType="submit"
           disabled={updateLoading}
-          className="bg-teal-700"
+          className="bg-green-600"
         >
           Update
         </Button>

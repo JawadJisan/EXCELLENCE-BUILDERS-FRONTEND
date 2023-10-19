@@ -53,8 +53,8 @@ export default async function Home() {
 
   return (
     <main>
-      <div className=" bg-teal-700 text-center text-sm py-2 px-2 text-white">
-        Protect and build your Dream House With Excellence Builders
+      <div className=" bg-green-600 text-center text-sm py-2 px-2 text-white">
+        Build Your Dream House With Excellience Builders
       </div>
       <PublicHeader />
       <HomeBanner />

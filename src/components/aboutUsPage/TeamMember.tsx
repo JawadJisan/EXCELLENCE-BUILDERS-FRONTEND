@@ -1,4 +1,4 @@
-import TeamMemberCard from '../common/TeamMemberCard';
+import TeamMemberCard from "../common/TeamMemberCard";
 
 /* eslint-disable @next/next/no-img-element */
 function TeamMember() {
@@ -11,7 +11,7 @@ function TeamMember() {
           </h2>
           <div className="mx-auto mt-4 max-w-[528px] mb-8 md:mb-12 lg:mb-16">
             <p className="text-hcOrange-base font-bold">
-              The Heart and Soul Behind House Crafters
+              The Heart and Soul Behind Excellience Builders
             </p>
           </div>
         </div>

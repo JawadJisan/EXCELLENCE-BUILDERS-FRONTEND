@@ -1,10 +1,10 @@
-import { useAddBookingMutation } from '@/redux/api/bookingApi';
-import { getUserInfo, isLoggedIn } from '@/services/auth.service';
-import { responseMessage } from '@/utils/responseMessage';
-import { message } from 'antd';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import HCModal from '../ui/Modal/HCModal';
+import { useAddBookingMutation } from "@/redux/api/bookingApi";
+import { getUserInfo, isLoggedIn } from "@/services/auth.service";
+import { responseMessage } from "@/utils/responseMessage";
+import { message } from "antd";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import HCModal from "../ui/Modal/HCModal";
 
 /* eslint-disable react/no-unescaped-entities */
 type props = {
@@ -15,7 +15,7 @@ type props = {
 
 function Slots({ slots, data: serviceData, date }: props) {
   const [open, setOpen] = useState<boolean>(false);
-  const [slotData, setSlotData] = useState<string>('');
+  const [slotData, setSlotData] = useState<string>("");
   const isUserLoggedIn = isLoggedIn();
   const { role, userId } = getUserInfo() as any;
   const [addBooking, { isLoading }] = useAddBookingMutation();
@@ -23,7 +23,7 @@ function Slots({ slots, data: serviceData, date }: props) {
 
   const bookingHandler = async (data: any) => {
     if (isLoading) {
-      message.loading('Create Booking');
+      message.loading("Create Booking");
     }
 
     try {
@@ -33,7 +33,7 @@ function Slots({ slots, data: serviceData, date }: props) {
         userId: userId,
         slotId: data?.id,
         serviceId: serviceData.data?.id,
-        paymentMethod: 'cashOnDelivery',
+        paymentMethod: "cashOnDelivery",
       };
       console.log(bookingData);
       const res = await addBooking(bookingData);
@@ -43,9 +43,9 @@ function Slots({ slots, data: serviceData, date }: props) {
       if (res) {
         setOpen(false);
 
-        responseMessage(res, 'Service Booked Successfully');
-        if ('data' in res && res.data) {
-          router.push('/my-bookings');
+        responseMessage(res, "Service Booked Successfully");
+        if ("data" in res && res.data) {
+          router.push("/my-bookings");
         }
       }
     } catch (err: any) {
@@ -63,9 +63,9 @@ function Slots({ slots, data: serviceData, date }: props) {
         >
           <p>Start Time: {slot.startTime}</p>
           {/* <p>Team Name: Apollo</p> */}
-          {isUserLoggedIn && role === 'customer' ? (
+          {isUserLoggedIn && role === "customer" ? (
             <button
-              className="text-white bg-teal-700 px-16 py-2 mt-2 rounded-md"
+              className="text-white bg-green-600 px-16 py-2 mt-2 rounded-md"
               onClick={() => {
                 setOpen(true);
                 setSlotData(slot);
@@ -76,7 +76,7 @@ function Slots({ slots, data: serviceData, date }: props) {
           ) : (
             <button
               disabled
-              className="text-white bg-teal-700 px-16 py-2 mt-2 rounded-md"
+              className="text-white bg-green-600 px-16 py-2 mt-2 rounded-md"
             >
               Login first
             </button>

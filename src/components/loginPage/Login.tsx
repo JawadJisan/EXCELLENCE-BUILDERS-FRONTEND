@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useUserLoginMutation } from '@/redux/api/authApi';
-import { loginSchema } from '@/schemas/login';
-import { getUserInfo, storeUserInfo } from '@/services/auth.service';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Col, Row, message } from 'antd';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { SubmitHandler } from 'react-hook-form';
-import Form from '../ui/Form/Form';
-import FormInput from '../ui/Form/FormInput';
+import { useUserLoginMutation } from "@/redux/api/authApi";
+import { loginSchema } from "@/schemas/login";
+import { getUserInfo, storeUserInfo } from "@/services/auth.service";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Col, Row, message } from "antd";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { SubmitHandler } from "react-hook-form";
+import Form from "../ui/Form/Form";
+import FormInput from "../ui/Form/FormInput";
 
 type FormValues = {
   id: string;
@@ -21,7 +21,7 @@ function Login() {
   const [userLogin, { isLoading }] = useUserLoginMutation();
   const router = useRouter();
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
@@ -31,24 +31,24 @@ function Login() {
 
       if (res?.data?.accessToken) {
         const { role } = getUserInfo() as any;
-        message.success('User logged in successfully');
-        if (role === 'customer') {
-          router.push('/my-profile');
+        message.success("User logged in successfully");
+        if (role === "customer") {
+          router.push("/myProfile");
         }
-        if (role === 'admin') {
-          router.push('/admin/myProfile');
+        if (role === "admin") {
+          router.push("/admin/myProfile");
         }
-        if (role === 'super_admin') {
-          router.push('/super-admin/my-profile');
+        if (role === "super_admin") {
+          router.push("/super-admin/myProfile");
         }
-        if (role === 'team_member') {
-          router.push('/team-member/my-profile');
+        if (role === "team_member") {
+          router.push("/team-member/myProfile");
         }
       }
     } catch (error: any) {
       console.log(error);
       setErrorMessage(error.message);
-      message.error('something went wrong, try again');
+      message.error("something went wrong, try again");
     }
   };
 
@@ -58,11 +58,11 @@ function Login() {
         sm={16}
         md={14}
         lg={10}
-        style={{ marginTop: '-96px' }}
+        style={{ marginTop: "-96px" }}
         className=" bg-teal-50 p-8 rounded-md"
       >
         <h1 className=" text-center text-2xl text-teal-900 font-bold mb-8 capitalize">
-          Login first before decorate your house
+          Login first before get the service from Excellience Builders
         </h1>
         <div>
           <Form submitHandler={onSubmit} resolver={yupResolver(loginSchema)}>
@@ -77,7 +77,7 @@ function Login() {
             </div>
             <div
               style={{
-                margin: '15px 0px',
+                margin: "15px 0px",
               }}
             >
               <FormInput
@@ -93,7 +93,7 @@ function Login() {
               className=" w-full py-2 rounded-md text-white text-lg bg-hcOrange-base"
               disabled={isLoading}
             >
-              {isLoading ? 'Please wait a moment...' : 'Login'}
+              {isLoading ? "Please wait a moment..." : "Login"}
             </button>
           </Form>
           {errorMessage && (

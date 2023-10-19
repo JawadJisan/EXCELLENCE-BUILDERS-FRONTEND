@@ -10,16 +10,16 @@
 
 .banner-one {
   background: linear-gradient(rgba(15, 118, 109, 0.9), rgba(15, 118, 109, 0.9)),
-    url('https://i.ibb.co/fGj7yPj/pexels-greta-hoffman-7728943.jpg');
+    url("https://i.ibb.co/Z2V4P9P/MG-6732-HDR.jpg");
 }
 
 .banner-two {
   background: linear-gradient(rgba(15, 118, 109, 0.9), rgba(15, 118, 109, 0.9)),
-    url('https://i.ibb.co/yRqYfJZ/pexels-andrea-piacquadio-3771111.jpg');
+    url("https://i.ibb.co/ZgTmZjR/ALEX-NYE-200812-Harper-Miramar-1652-crop2.jpg");
 }
 .banner-three {
   background: linear-gradient(rgba(15, 118, 109, 0.9), rgba(15, 118, 109, 0.9)),
-    url('https://i.ibb.co/vPHzf8h/pexels-karolina-grabowska-4239146.jpg');
+    url("https://i.ibb.co/D5yJ7y0/Portola-10.jpg");
 }
 
 .banner-content {
@@ -45,7 +45,7 @@
   line-height: 1.1;
   position: relative;
   margin-bottom: 64px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 @media only screen and (max-width: 1200px) {

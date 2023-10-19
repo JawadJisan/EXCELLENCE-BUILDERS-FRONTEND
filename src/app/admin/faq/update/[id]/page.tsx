@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCBreadCrumbs from '@/components/ui/BreadCrumbs/HCBreadCrumb';
-import Form from '@/components/ui/Form/Form';
-import FormInput from '@/components/ui/Form/FormInput';
-import { useFaqQuery, useUpdateFaqMutation } from '@/redux/api/faqApi';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCBreadCrumbs from "@/components/ui/BreadCrumbs/HCBreadCrumb";
+import Form from "@/components/ui/Form/Form";
+import FormInput from "@/components/ui/Form/FormInput";
+import { useFaqQuery, useUpdateFaqMutation } from "@/redux/api/faqApi";
 
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Col, Row, message } from 'antd';
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Col, Row, message } from "antd";
 
 type IDProps = {
   params: any;
@@ -21,12 +21,12 @@ const FaqUpdatePage = ({ params }: IDProps) => {
 
   const onSubmit = async (values: { title: string }) => {
     if (isLoading) {
-      message.loading('Updating.....');
+      message.loading("Updating.....");
     }
     try {
       //   console.log(data);
       const res = await updateFaq({ id, body: values });
-      responseMessage(res, 'Faq updated successfully');
+      responseMessage(res, "Faq updated successfully");
     } catch (err: any) {
       //   console.error(err.message);
       message.error(err.message);
@@ -35,8 +35,8 @@ const FaqUpdatePage = ({ params }: IDProps) => {
 
   // @ts-ignore
   const defaultValues = {
-    question: data?.data?.question || '',
-    answer: data?.data?.answer || '',
+    question: data?.data?.question || "",
+    answer: data?.data?.answer || "",
   };
 
   return (
@@ -44,8 +44,8 @@ const FaqUpdatePage = ({ params }: IDProps) => {
       <HCBreadCrumbs
         items={[
           {
-            label: 'Faqs List',
-            link: '/admin/faq',
+            label: "Faqs List",
+            link: "/admin/faq",
           },
         ]}
       />
@@ -53,12 +53,12 @@ const FaqUpdatePage = ({ params }: IDProps) => {
       <ActionBar title="Update Faq"> </ActionBar>
       <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput name="question" label="Question" />
           </Col>
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormInput name="answer" label="Answer" />
           </Col>
         </Row>
@@ -67,7 +67,7 @@ const FaqUpdatePage = ({ params }: IDProps) => {
           type="primary"
           htmlType="submit"
           disabled={updateLoading}
-          className="bg-teal-700"
+          className="bg-green-600"
         >
           Update
         </Button>

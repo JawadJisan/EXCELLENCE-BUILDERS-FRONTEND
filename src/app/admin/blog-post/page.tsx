@@ -1,39 +1,39 @@
-'use client';
+"use client";
 import {
   DeleteOutlined,
   EditOutlined,
   ReloadOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCModal from '@/components/ui/Modal/HCModal';
-import HCTable from '@/components/ui/Table/HCTable';
-import { useDebounced } from '@/hooks/useDebounced';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCModal from "@/components/ui/Modal/HCModal";
+import HCTable from "@/components/ui/Table/HCTable";
+import { useDebounced } from "@/hooks/useDebounced";
 
-import { useBlogsQuery, useDeleteBlogMutation } from '@/redux/api/blogApi';
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Input, message } from 'antd';
-import dayjs from 'dayjs';
-import Link from 'next/link';
-import { useState } from 'react';
+import { useBlogsQuery, useDeleteBlogMutation } from "@/redux/api/blogApi";
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Input, message } from "antd";
+import dayjs from "dayjs";
+import Link from "next/link";
+import { useState } from "react";
 
 const BlogListPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>('');
-  const [sortOrder, setSortOrder] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [deleteBlog, { isLoading: deleteLoading }] = useDeleteBlogMutation();
 
   const [open, setOpen] = useState<boolean>(false);
-  const [blogId, setBlogId] = useState<string>('');
+  const [blogId, setBlogId] = useState<string>("");
 
-  query['limit'] = size;
-  query['page'] = page;
-  query['sortBy'] = sortBy;
-  query['sortOrder'] = sortOrder;
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
 
   const debouncedTerm = useDebounced({
@@ -42,7 +42,7 @@ const BlogListPage = () => {
   });
 
   if (!!debouncedTerm) {
-    query['searchTerm'] = debouncedTerm;
+    query["searchTerm"] = debouncedTerm;
   }
   const { data, isLoading } = useBlogsQuery({ ...query });
 
@@ -50,13 +50,13 @@ const BlogListPage = () => {
   const meta = data?.meta;
 
   const deleteHandler = async (id: string) => {
-    message.loading('Deleting.....');
+    message.loading("Deleting.....");
     try {
       const res = await deleteBlog(id);
 
       if (res) {
         setOpen(false);
-        responseMessage(res, 'Blog Deleted Successfully');
+        responseMessage(res, "Blog Deleted Successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -66,32 +66,32 @@ const BlogListPage = () => {
 
   const columns = [
     {
-      title: 'Title',
-      dataIndex: 'title',
+      title: "Title",
+      dataIndex: "title",
     },
     {
-      title: 'Author Name',
-      dataIndex: 'authorName',
+      title: "Author Name",
+      dataIndex: "authorName",
     },
     {
-      title: 'CreatedAt',
-      dataIndex: 'createdAt',
+      title: "CreatedAt",
+      dataIndex: "createdAt",
       render: function (data: any) {
-        return data && dayjs(data).format('MMM D, YYYY hh:mm A');
+        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
       },
       sorter: true,
     },
     {
-      title: 'Action',
+      title: "Action",
       render: function (data: any) {
         return (
           <div className="flex items-center">
             <Link href={`/admin/blog-post/update/${data?.id}`}>
               <Button
                 style={{
-                  margin: '0px 5px',
+                  margin: "0px 5px",
                 }}
-                className="bg-teal-700 flex items-center"
+                className="bg-green-600 flex items-center"
                 onClick={() => console.log(data)}
                 type="primary"
               >
@@ -123,13 +123,13 @@ const BlogListPage = () => {
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     setSortBy(field as string);
-    setSortOrder(order === 'ascend' ? 'asc' : 'desc');
+    setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
   const resetFilters = () => {
-    setSortBy('');
-    setSortOrder('');
-    setSearchTerm('');
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
   };
 
   return (
@@ -140,7 +140,7 @@ const BlogListPage = () => {
           size="large"
           placeholder="Search..."
           style={{
-            width: '20%',
+            width: "20%",
           }}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -156,8 +156,8 @@ const BlogListPage = () => {
             <Button
               onClick={resetFilters}
               type="primary"
-              style={{ margin: '0px 5px' }}
-              className=" bg-teal-700 flex items-center"
+              style={{ margin: "0px 5px" }}
+              className=" bg-green-600 flex items-center"
             >
               Reset
               <ReloadOutlined />

@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import ActionBar from '@/components/ui/ActionBar/ActionBar';
-import HCBreadCrumbs from '@/components/ui/BreadCrumbs/HCBreadCrumb';
-import Form from '@/components/ui/Form/Form';
-import FormSelectField from '@/components/ui/Form/FormSelectField';
-import ServiceField from '@/components/ui/Form/ServiceField';
-import { booleanOptions } from '@/constants/global';
+import ActionBar from "@/components/ui/ActionBar/ActionBar";
+import HCBreadCrumbs from "@/components/ui/BreadCrumbs/HCBreadCrumb";
+import Form from "@/components/ui/Form/Form";
+import FormSelectField from "@/components/ui/Form/FormSelectField";
+import ServiceField from "@/components/ui/Form/ServiceField";
+import { booleanOptions } from "@/constants/global";
 import {
   useAvailableServiceQuery,
   useUpdateAvailableServiceMutation,
-} from '@/redux/api/availableServiceApi';
-import { responseMessage } from '@/utils/responseMessage';
-import { Button, Col, Row, message } from 'antd';
-import { revalidateTag } from 'next/cache';
+} from "@/redux/api/availableServiceApi";
+import { responseMessage } from "@/utils/responseMessage";
+import { Button, Col, Row, message } from "antd";
+import { revalidateTag } from "next/cache";
 
 type IDProps = {
   params: any;
@@ -27,11 +27,11 @@ const AvailableServiceUpdatePage = ({ params }: IDProps) => {
 
   const onSubmit = async (data: any) => {
     if (isLoading) {
-      message.loading('Updating.....');
+      message.loading("Updating.....");
     }
     try {
-      const updatedIsFeatured = data.isFeatured === 'true' ? true : false;
-      const updatedIsAvailable = data.isAvailable === 'true' ? true : false;
+      const updatedIsFeatured = data.isFeatured === "true" ? true : false;
+      const updatedIsAvailable = data.isAvailable === "true" ? true : false;
 
       const updatedData = {
         ...data,
@@ -41,8 +41,8 @@ const AvailableServiceUpdatePage = ({ params }: IDProps) => {
 
       //   console.log(data);
       const res = await updateAvailableService({ id, body: updatedData });
-      revalidateTag('availableServices');
-      responseMessage(res, 'Service updated successfully');
+      revalidateTag("availableServices");
+      responseMessage(res, "Service updated successfully");
     } catch (err: any) {
       //   console.error(err.message);
       message.error(err.message);
@@ -51,9 +51,9 @@ const AvailableServiceUpdatePage = ({ params }: IDProps) => {
 
   // @ts-ignore
   const defaultValues = {
-    serviceId: data?.data?.serviceId || '',
-    isFeatured: String(data?.data?.isFeatured) || '',
-    isAvailable: String(data?.data?.isAvailable) || '',
+    serviceId: data?.data?.serviceId || "",
+    isFeatured: String(data?.data?.isFeatured) || "",
+    isAvailable: String(data?.data?.isAvailable) || "",
   };
 
   console.log(defaultValues);
@@ -63,8 +63,8 @@ const AvailableServiceUpdatePage = ({ params }: IDProps) => {
       <HCBreadCrumbs
         items={[
           {
-            label: 'Available Services',
-            link: '/admin/available-service',
+            label: "Available Services",
+            link: "/admin/available-service",
           },
         ]}
       />
@@ -72,12 +72,12 @@ const AvailableServiceUpdatePage = ({ params }: IDProps) => {
       <ActionBar title="Update Service Category"> </ActionBar>
       <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <ServiceField name="serviceId" label="Select Service" />
           </Col>
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormSelectField
               size="large"
               name="isFeatured"
@@ -88,7 +88,7 @@ const AvailableServiceUpdatePage = ({ params }: IDProps) => {
           </Col>
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-          <Col span={8} style={{ margin: '10px 0' }}>
+          <Col span={8} style={{ margin: "10px 0" }}>
             <FormSelectField
               size="large"
               name="isAvailable"
@@ -102,7 +102,7 @@ const AvailableServiceUpdatePage = ({ params }: IDProps) => {
           type="primary"
           htmlType="submit"
           disabled={updateLoading}
-          className="bg-teal-700"
+          className="bg-green-600"
         >
           Update
         </Button>

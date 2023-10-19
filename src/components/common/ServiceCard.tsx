@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link';
+import Link from "next/link";
 
 function ServiceCard({ service }: any) {
   return (
@@ -28,7 +28,7 @@ function ServiceCard({ service }: any) {
         <div className="mt-auto">
           <Link
             href={`/book-service/${service?.id}`}
-            className="flex-row flex max-w-full grid-cols-2 items-center justify-center bg-teal-700 py-4 text-center font-semibold text-white px-8"
+            className="flex-row flex max-w-full grid-cols-2 items-center justify-center bg-green-600 py-4 text-center font-semibold text-white px-8"
           >
             <div className="mr-6 font-bold">Book Now</div>
           </Link>
