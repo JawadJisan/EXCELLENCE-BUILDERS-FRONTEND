@@ -154,7 +154,7 @@ const AvailableServiceListPage = () => {
               style={{ margin: "0px 5px" }}
               className=" bg-green-600 flex items-center"
             >
-              Reset
+              RESET
               <ReloadOutlined />
             </Button>
           )}
