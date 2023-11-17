@@ -55,7 +55,7 @@ export default async function Home() {
     cache: "no-store",
   });
   const { data: feedbacksData } = await feedbacks.json();
-  const firstSixFeedbacks = feedbacksData.slice(0, 6);
+  const firstSixFeedbacks = feedbacksData?.slice(0, 6);
 
   return (
     <main>
