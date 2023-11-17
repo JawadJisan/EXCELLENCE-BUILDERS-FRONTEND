@@ -41,7 +41,7 @@ const AvailableServiceUpdatePage = ({ params }: IDProps) => {
 
       //   console.log(data);
       const res = await updateAvailableService({ id, body: updatedData });
-      revalidateTag("availableServices");
+      // revalidateTag("availableServices");
       responseMessage(res, "Service updated successfully");
     } catch (err: any) {
       //   console.error(err.message);

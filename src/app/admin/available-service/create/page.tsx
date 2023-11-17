@@ -29,7 +29,7 @@ const CreateAvailableServicePage = () => {
       };
 
       const res = await addAvailableService(updatedData);
-      revalidateTag("availableServices");
+      // revalidateTag("availableServices");
       responseMessage(res, "Available service created Successfully");
     } catch (err: any) {
       console.log(err);
