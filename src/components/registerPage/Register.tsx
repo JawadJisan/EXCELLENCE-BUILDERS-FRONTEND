@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { genderOptions } from '@/constants/global';
-import { useUserRegisterMutation } from '@/redux/api/authApi';
-import { registerSchema } from '@/schemas/register';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Col, Row, message } from 'antd';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { SubmitHandler } from 'react-hook-form';
-import Form from '../ui/Form/Form';
-import FormInput from '../ui/Form/FormInput';
-import FormSelectField from '../ui/Form/FormSelectField';
+import { genderOptions } from "@/constants/global";
+import { useUserRegisterMutation } from "@/redux/api/authApi";
+import { registerSchema } from "@/schemas/register";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Col, Row, message } from "antd";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { SubmitHandler } from "react-hook-form";
+import Form from "../ui/Form/Form";
+import FormInput from "../ui/Form/FormInput";
+import FormSelectField from "../ui/Form/FormSelectField";
 
 type FormValues = {
   fullName: string;
@@ -25,22 +25,22 @@ type FormValues = {
 
 function RegisterForm() {
   const [userRegister, { isLoading }] = useUserRegisterMutation();
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const res = await userRegister({ ...data }).unwrap();
-      router.push('/signin');
-      setErrorMessage('');
+      router.push("/signin");
+      setErrorMessage("");
     } catch (error: any) {
-      if (error.message === 'email must be a unique value') {
-        setErrorMessage('User already exist with this email');
+      if (error.message === "email must be a unique value") {
+        setErrorMessage("User already exist with this email");
       } else {
         setErrorMessage(error.message);
       }
 
-      message.error(errorMessage || 'Something went worng');
+      message.error(errorMessage || "Something went worng");
       console.log(error);
     }
   };
@@ -51,7 +51,7 @@ function RegisterForm() {
         sm={18}
         md={18}
         lg={14}
-        style={{ marginTop: '-96px' }}
+        style={{ marginTop: "-96px" }}
         className=" bg-teal-50 p-8 rounded-md"
       >
         <h1 className=" text-center text-2xl text-teal-900 font-bold mb-8 capitalize">
@@ -71,7 +71,7 @@ function RegisterForm() {
                 xs={32}
                 sm={32}
                 style={{
-                  marginBottom: '10px',
+                  marginBottom: "10px",
                 }}
               >
                 <FormInput
@@ -89,7 +89,7 @@ function RegisterForm() {
                 xs={32}
                 sm={32}
                 style={{
-                  marginBottom: '10px',
+                  marginBottom: "10px",
                 }}
               >
                 <FormInput
@@ -107,7 +107,7 @@ function RegisterForm() {
                 xs={32}
                 sm={32}
                 style={{
-                  marginBottom: '10px',
+                  marginBottom: "10px",
                 }}
               >
                 <FormInput
@@ -125,7 +125,7 @@ function RegisterForm() {
                 xs={32}
                 sm={32}
                 style={{
-                  marginBottom: '10px',
+                  marginBottom: "10px",
                 }}
               >
                 <FormInput
@@ -143,7 +143,7 @@ function RegisterForm() {
                 xs={32}
                 sm={32}
                 style={{
-                  marginBottom: '10px',
+                  marginBottom: "10px",
                 }}
               >
                 <FormSelectField
@@ -162,7 +162,7 @@ function RegisterForm() {
                 xs={32}
                 sm={32}
                 style={{
-                  marginBottom: '10px',
+                  marginBottom: "10px",
                 }}
               >
                 <FormInput
@@ -181,7 +181,7 @@ function RegisterForm() {
                 xs={32}
                 sm={32}
                 style={{
-                  marginBottom: '10px',
+                  marginBottom: "10px",
                 }}
               >
                 <FormInput
@@ -199,7 +199,7 @@ function RegisterForm() {
               className=" w-full py-2 rounded-md text-white text-lg bg-hcOrange-base"
               disabled={isLoading}
             >
-              {isLoading ? 'Signing up...' : 'Register'}
+              {isLoading ? "Signing up..." : "Register"}
             </button>
           </Form>
           {errorMessage && (

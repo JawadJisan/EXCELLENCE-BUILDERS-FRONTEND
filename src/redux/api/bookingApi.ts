@@ -1,14 +1,14 @@
-import { tagTypes } from '../tagTypes';
-import { baseApi } from './baseApi';
+import { tagTypes } from "../tagTypes";
+import { baseApi } from "./baseApi";
 
-const BOOKING = '/booking';
+const BOOKING = "/booking";
 
 export const bookingApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     bookings: build.query({
       query: (arg: Record<string, any>) => ({
         url: BOOKING,
-        method: 'GET',
+        method: "GET",
         params: arg,
       }),
       transformResponse: (response: any) => {
@@ -23,7 +23,7 @@ export const bookingApi = baseApi.injectEndpoints({
     addBooking: build.mutation({
       query: (data) => ({
         url: `${BOOKING}/book-service`,
-        method: 'POST',
+        method: "POST",
         data,
       }),
       invalidatesTags: [tagTypes.booking],
@@ -32,7 +32,7 @@ export const bookingApi = baseApi.injectEndpoints({
     cacelBooking: build.mutation({
       query: (data) => ({
         url: `${BOOKING}/cancel-book/${data.bookingId}/${data.paymentId}`,
-        method: 'PATCH',
+        method: "PATCH",
         data: data.body,
       }),
       invalidatesTags: [tagTypes.booking],
@@ -41,7 +41,7 @@ export const bookingApi = baseApi.injectEndpoints({
     finishBooking: build.mutation({
       query: (data) => ({
         url: `${BOOKING}/finish-book/${data.bookingId}/${data.paymentId}`,
-        method: 'PATCH',
+        method: "PATCH",
         data: data.body,
       }),
       invalidatesTags: [tagTypes.booking],
@@ -49,9 +49,9 @@ export const bookingApi = baseApi.injectEndpoints({
 
     // get single by id
     getSingleBooking: build.query({
-      query: (id) => ({
-        url: `${BOOKING}/${id}`,
-        method: 'GET',
+      query: (data) => ({
+        url: `${BOOKING}/${data?.bookingId}`,
+        method: "GET",
       }),
       providesTags: [tagTypes.booking],
     }),
@@ -60,7 +60,7 @@ export const bookingApi = baseApi.injectEndpoints({
     updateSingleBooking: build.mutation({
       query: (data) => ({
         url: `${BOOKING}/${data.id}`,
-        method: 'PATCH',
+        method: "PATCH",
         data: data.body,
       }),
       invalidatesTags: [tagTypes.booking],
@@ -70,7 +70,7 @@ export const bookingApi = baseApi.injectEndpoints({
     deleteBooking: build.mutation({
       query: (id) => ({
         url: `${BOOKING}/${id}`,
-        method: 'DELETE',
+        method: "DELETE",
       }),
       invalidatesTags: [tagTypes.booking],
     }),

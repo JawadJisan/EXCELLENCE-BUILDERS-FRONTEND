@@ -3,6 +3,7 @@ import { getUserInfo } from "@/services/auth.service";
 import { responseMessage } from "@/utils/responseMessage";
 import { message } from "antd";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 function AddFeedback() {
   const { userId } = getUserInfo() as any;
@@ -26,6 +27,7 @@ function AddFeedback() {
     try {
       const res = await addFeedback(data);
       setReview("");
+      Swal.fire("Thank You", "Your feedback recorded successfully", "success");
       responseMessage(res, "Feedback added Successfully");
     } catch (err: any) {
       console.log(err);
