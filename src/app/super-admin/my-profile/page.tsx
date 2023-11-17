@@ -26,11 +26,13 @@ function SuperAdminMyProfilePage() {
       message.loading("Updating.....");
     }
     try {
-      //   console.log(data);
+      if (!values.password) {
+        delete values.password;
+      }
+
       const res = await updateProfile({ body: values });
       responseMessage(res, "Profile updated successfully");
     } catch (err: any) {
-      //   console.error(err.message);
       message.error(err.message);
     }
   };
@@ -39,7 +41,6 @@ function SuperAdminMyProfilePage() {
   const defaultValues = {
     fullName: profileData?.fullName || "",
     email: profileData?.email || "",
-    password: profileData?.password || "",
     contactNumber: profileData?.contactNumber || "",
     gender: profileData?.gender || "",
     profileImageUrl: profileData?.profileImageUrl || "",
@@ -51,11 +52,11 @@ function SuperAdminMyProfilePage() {
   }
   return (
     <div>
-      <div className="text-center text-4xl text-teal-700 mt-4">
+      <div className="text-center text-4xl text-green-700 mt-4">
         <h1 className="text-center">
           Welcome to your profile {profileData?.fullName}
         </h1>
-        <div className="w-[150px] h-[150px] bg-teal-500 mx-auto mt-4">
+        <div className="w-[150px] h-[150px] bg-green-500 mx-auto mt-4">
           <img
             src={profileData?.profileImageUrl}
             alt="avatar"
@@ -72,7 +73,6 @@ function SuperAdminMyProfilePage() {
               size="large"
               name="fullName"
               label="Your Full Name"
-              required
             />
           </Col>
           <Col span={8} style={{ margin: "10px 0" }}>
@@ -81,7 +81,6 @@ function SuperAdminMyProfilePage() {
               size="large"
               name="email"
               label="Your Email"
-              required
             />
           </Col>
           <Col span={8} style={{ margin: "10px 0" }}>
@@ -90,18 +89,8 @@ function SuperAdminMyProfilePage() {
               size="large"
               name="contactNumber"
               label="Your Phone Number"
-              required
             />
           </Col>
-          {/* <Col span={8} style={{ margin: '10px 0' }}>
-            <FormInput
-              type="password"
-              size="large"
-              name="password"
-              label="Your Password"
-              required
-            />
-          </Col> */}
         </Row>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
           <Col span={8} style={{ margin: "10px 0" }}>
@@ -111,7 +100,6 @@ function SuperAdminMyProfilePage() {
               options={genderOptions}
               label="Your Gender"
               placeholder="Select"
-              required
             />
           </Col>
           <Col span={8} style={{ margin: "10px 0" }}>
@@ -120,7 +108,6 @@ function SuperAdminMyProfilePage() {
               size="large"
               name="profileImageUrl"
               label="Your Profile Image Url"
-              required
             />
           </Col>
           <Col span={8} style={{ margin: "10px 0" }}>
@@ -129,7 +116,15 @@ function SuperAdminMyProfilePage() {
               size="large"
               name="address"
               label="User Address"
-              required
+            />
+          </Col>
+
+          <Col span={8} style={{ margin: "10px 0" }}>
+            <FormInput
+              type="password"
+              size="large"
+              name="password"
+              label="Your New Password"
             />
           </Col>
         </Row>
@@ -138,7 +133,7 @@ function SuperAdminMyProfilePage() {
           type="primary"
           htmlType="submit"
           disabled={updateLoading}
-          className="bg-green-600"
+          className="bg-green-700"
         >
           Update
         </Button>
