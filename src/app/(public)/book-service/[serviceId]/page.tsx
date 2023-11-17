@@ -28,6 +28,7 @@ function BookServiceSinglePage({ params }: IDProps) {
   };
 
   const { data, isLoading, refetch } = useRemainingServiceQuery(paramData);
+  console.log("data:", data);
 
   useEffect(() => {
     if (date) {
@@ -40,7 +41,7 @@ function BookServiceSinglePage({ params }: IDProps) {
   }
 
   const { serviceName, service, price, slots, totalServiceProvided } =
-    data?.data;
+    data?.data || [];
 
   return (
     <div className="bg-white">
