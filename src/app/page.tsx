@@ -16,7 +16,7 @@ export default async function Home() {
   const featuredRes = await fetch(
     `${baseUrl}/available-service?page=1&limit=30`,
     {
-      next: { tags: ["availableServices"] },
+      cache: "no-store",
     }
   );
   const { data: featuredServices } = await featuredRes.json();
@@ -28,7 +28,7 @@ export default async function Home() {
   const categories = await fetch(
     `${baseUrl}/service-category?page=1&limit=30`,
     {
-      next: { tags: ["categories"] },
+      cache: "no-store",
     }
   );
   const { data: categoriesData } = await categories.json();
@@ -36,7 +36,7 @@ export default async function Home() {
   const upcomingService = await fetch(
     `${baseUrl}/upcoming-service?page=1&limit=30`,
     {
-      next: { tags: ["upcomingServices"] },
+      cache: "no-store",
     }
   );
   const { data: upcomingServies } = await upcomingService.json();
@@ -47,14 +47,20 @@ export default async function Home() {
   );
 
   const blogs = await fetch(`${baseUrl}/blog?page=1&limit=6`, {
-    next: { tags: ["blogs"] },
+    cache: "no-store",
   });
   const { data: blogsData } = await blogs.json();
 
+  const feedbacks = await fetch(`${baseUrl}/feedback`, {
+    cache: "no-store",
+  });
+  const { data: feedbacksData } = await feedbacks.json();
+  const firstSixFeedbacks = feedbacksData.slice(0, 6);
+
   return (
     <main>
-      <div className=" bg-green-600 text-center text-sm py-2 px-2 text-white">
-        Build Your Dream House With Excellience Builders
+      <div className=" bg-teal-700 text-center text-sm py-2 px-2 text-white">
+        Protect and Decorate Your Home With our Best House Crafters
       </div>
       <PublicHeader />
       <HomeBanner />
@@ -64,7 +70,7 @@ export default async function Home() {
       <Services featuredServices={updatedFeaturedServices} />
       <CallToAction />
       <UpcomingService upcomingServices={upcomingServiesData} />
-      <Reviews />
+      <Reviews feedbacks={firstSixFeedbacks} />
       <LatestBlogs blogs={blogsData} />
       <Showcase />
     </main>
