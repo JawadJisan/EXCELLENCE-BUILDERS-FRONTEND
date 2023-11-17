@@ -14,14 +14,9 @@ const CreateSlot = ({ availableServiceId }: { availableServiceId: string }) => {
   const onSubmit = async (data: any) => {
     message.loading("Creating.....");
     try {
-      console.log({ ...data, availableServiceId: availableServiceId });
-
       //   const res = await addSlot(updatedData);
-
       //responseMessage(res, 'Slot created Successfully');
     } catch (err: any) {
-      console.log(err);
-
       message.error(err.message || "Something went wrong try again");
     }
   };
@@ -48,7 +43,7 @@ const CreateSlot = ({ availableServiceId }: { availableServiceId: string }) => {
           type="primary"
           htmlType="submit"
           disabled={slotLoading}
-          className="bg-green-600"
+          className="bg-teal-700"
         >
           add
         </Button>

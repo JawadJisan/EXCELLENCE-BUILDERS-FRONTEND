@@ -25,20 +25,24 @@ function AddReview({ serviceId }: { serviceId: string }) {
       rating: value,
       review: review,
     };
-    console.log(data);
+
     message.loading("Adding Review...");
     try {
       const res = await addReviewAndRating(data);
       responseMessage(res, "Review added Successfully");
     } catch (err: any) {
-      console.log(err);
-
       message.error(err.message || "Something went wrong try again");
     }
   };
   return (
     <div>
-      <h2 className="text-lg text-teal-950 mb-3 font-semibold">Your Review:</h2>
+      <h2 className="text-lg text-teal-950 mb-3 font-semibold">
+        Your Review:{" "}
+        <span className="text-sm font-normal text-gray-500">
+          (You Can only give review if you have confirmed booking of this
+          service)
+        </span>
+      </h2>
       <form
         className=" max-w-[400px] bg-teal-50 p-4 rounded-md"
         onSubmit={onSubmit}
@@ -62,7 +66,7 @@ function AddReview({ serviceId }: { serviceId: string }) {
         </div>
         <button
           type="submit"
-          className="bg-green-600 px-2 py-1 mt-4 rounded-md text-white"
+          className="bg-teal-700 px-2 py-1 mt-4 rounded-md text-white"
         >
           Add Review
         </button>

@@ -22,10 +22,7 @@ function BookForm() {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      console.log(data);
-    } catch (error: any) {
-      console.log(error);
-    }
+    } catch (error: any) {}
   };
 
   return (
@@ -61,7 +58,7 @@ function BookForm() {
 
             <button
               type="submit"
-              className=" w-full mt-4 py-2 rounded-md text-white text-lg bg-green-600"
+              className=" w-full mt-4 py-2 rounded-md text-white text-lg bg-teal-700"
             >
               Book Service
             </button>
