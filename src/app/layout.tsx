@@ -1,4 +1,5 @@
 import Footer from "@/components/ui/Footer/Footer";
+import NewFooter from "@/components/ui/Footer/NewFooter";
 import Providers from "@/lib/Providers";
 import { Metadata } from "next";
 import "./globals.css";
@@ -19,6 +20,7 @@ export default function RootLayout({
         <body>
           <main className=" min-h-screen">{children}</main>
           <Footer />
+          {/* <NewFooter /> */}
         </body>
       </html>
     </Providers>

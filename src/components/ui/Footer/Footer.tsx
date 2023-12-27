@@ -1,17 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 function Footer() {
   return (
-    <footer className="relative text-white bg-teal-950">
+    <footer className="relative text-white bg-teal-800">
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-16 lg:py-16">
         <div className="flex flex-col items-center">
           <a href="#" className="text-white text-4xl font-bold">
             Excellience <span className="text-hcOrange-base">Builders</span>
           </a>
-          <p className="mx-auto mt-4 max-w-[528px] text-center text-[#636262]">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit ut
-            aliquam,purus sit amet luctus magna fringilla urna
+          <p className="mx-auto mt-4 font-semibold max-w-[528px] text-center text-[#1a1a1a]">
+            To Order or Book Our Services Please First Register & See Our
+            Services and Then Booked Your Desire Service from Our Website
           </p>
-          Excellience Builders
           <div className="mt-10 text-center font-semibold">
             <a
               href="#"
