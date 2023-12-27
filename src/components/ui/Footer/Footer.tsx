@@ -4,7 +4,10 @@ function Footer() {
     <footer className="relative text-white bg-teal-800">
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-16 lg:py-16">
         <div className="flex flex-col items-center">
-          <a href="#" className="text-white text-4xl font-bold">
+          <a
+            href="#"
+            className="text-white text-xl  text-center md:text-3xl lg:text-4xl font-bold"
+          >
             Excellience <span className="text-hcOrange-base">Builders</span>
           </a>
           <p className="mx-auto mt-4 font-semibold max-w-[528px] text-center text-[#1a1a1a]">
