@@ -1,7 +1,7 @@
 import ClientReviewCard from "../common/ClientReviewCard";
 
 /* eslint-disable react/no-unescaped-entities */
-function Reviews({ feedbacks }) {
+function Reviews({ feedbacks }: any) {
   return (
     <div>
       <section className="bg-hcOrange-base">

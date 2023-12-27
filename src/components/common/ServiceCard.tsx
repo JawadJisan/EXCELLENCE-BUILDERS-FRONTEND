@@ -13,7 +13,7 @@ function ServiceCard({ service }: any) {
           className="inline-block w-full object-cover h-60"
         />
         <div className="w-full px-6 py-4">
-          <span className="text-xs font-semibold uppercase bg-hcOrange-base px-2 py-1  text-white">
+          <span className="text-xs rounded-md font-semibold uppercase bg-hcOrange-base px-2 py-1  text-white">
             {service?.service?.serviceCategory?.categoryName}
           </span>
           <div className="text-xl font-semibold mb-4 mt-4">
@@ -28,7 +28,7 @@ function ServiceCard({ service }: any) {
         <div className="mt-auto">
           <Link
             href={`/book-service/${service?.id}`}
-            className="flex-row flex max-w-full grid-cols-2 items-center justify-center bg-green-600 py-4 text-center font-semibold text-white px-8"
+            className="flex-row flex max-w-full grid-cols-2 items-center justify-center bg-teal-700 hover:bg-teal-900 py-4 text-center font-semibold text-white px-8"
           >
             <div className="mr-6 font-bold">Book Now</div>
           </Link>

@@ -6,14 +6,14 @@ function Categories({ categories }) {
   // console.log("categories:", categories);
   return (
     <section className="block">
-      <div className="py-24 md:py-24 lg:pb-32 lg:pt-32 mx-auto w-full max-w-7xl px-5 md:px-10">
+      <div className="py-24 md:py-24 lg:pb-20 lg:pt-20 mx-auto w-full max-w-7xl px-5 md:px-10">
         <div className="">
           <div className="text-center">
             <h2 className="font-bold text-3xl text-teal-950 md:text-5xl">
               Explore Our Excellience Buildres Provides Categories
             </h2>
-            <div className="mx-auto mt-4 max-w-[528px] mb-8 md:mb-1 lg:mb-16">
-              <p className="text-hcOrange-base font-semibold">
+            <div className="mx-auto mt-6 max-w-[528px] mb-8 md:mb-1 lg:mb-16">
+              <p className="text-hcOrange-base mb-6 font-semibold">
                 Tailored Services to Elevate Every Aspect of Your Home
               </p>
             </div>

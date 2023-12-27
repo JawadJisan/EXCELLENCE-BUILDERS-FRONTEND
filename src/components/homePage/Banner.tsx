@@ -18,7 +18,7 @@ const HomeBanner = () => (
           href="/available-services"
           className="px-8 py-4 rounded-md text-white text-lg bg-hcOrange-base"
         >
-          Our Services
+          Book Your Services
         </Link>
       </div>
     </section>
@@ -33,7 +33,7 @@ const HomeBanner = () => (
           href="/available-services"
           className="px-8 py-4 rounded-md text-white text-lg bg-hcOrange-base"
         >
-          Our Services
+          Get You Services
         </Link>
       </div>
     </section>
