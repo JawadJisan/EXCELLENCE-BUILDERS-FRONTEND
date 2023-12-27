@@ -61,7 +61,7 @@ function Login() {
         style={{ marginTop: "-96px" }}
         className=" bg-teal-50 p-8 rounded-md"
       >
-        <h1 className=" text-center text-2xl text-teal-900 font-bold mb-8 capitalize">
+        <h1 className=" text-center text-xl md:text-2xl lg:text-4xl text-teal-900 font-bold mb-8 capitalize">
           Login first before get the service from Excellience Builders
         </h1>
         <div>
