@@ -7,10 +7,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Col, Row, message } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import Form from "../ui/Form/Form";
 import FormInput from "../ui/Form/FormInput";
+import "./Login.css";
 
 type FormValues = {
   id: string;
@@ -50,6 +51,30 @@ function Login() {
       setErrorMessage(error.message);
       message.error("something went wrong, try again");
     }
+  };
+
+  const [copiedText, setCopiedText] = useState("");
+  const pRef = useRef(null);
+  const pRef1 = useRef(null);
+  const uRef = useRef(null);
+
+  const handleClick = () => {
+    const text = pRef.current.innerText;
+    navigator.clipboard.writeText(text);
+    setCopiedText(text);
+    message.success("Email copied!");
+  };
+  const handleClick1 = () => {
+    const text = pRef1.current.innerText;
+    navigator.clipboard.writeText(text);
+    setCopiedText(text);
+    message.success("Email copied!");
+  };
+  const handlepass = () => {
+    const text = uRef.current.innerText;
+    navigator.clipboard.writeText(text);
+    setCopiedText(text);
+    message.success("Password copied!");
   };
 
   return (
@@ -102,6 +127,38 @@ function Login() {
           <p className="mt-1">
             Do not have an account? <Link href="/register">Signup first</Link>
           </p>
+        </div>
+        <div className="userDetails">
+          <div>
+            <p className="credientialHeading">Admin Credential</p>
+            <p>
+              Email:{" "}
+              <span ref={pRef} onClick={handleClick} className="emailBold">
+                admins@gmail.com
+              </span>
+            </p>
+            <p>
+              password:{" "}
+              <span style={{ cursor: "copy" }} ref={uRef} onClick={handlepass}>
+                123456
+              </span>{" "}
+            </p>
+          </div>
+          <div>
+            <p className="credientialHeading">User Credential</p>
+            <p>
+              Email:{" "}
+              <span ref={pRef1} onClick={handleClick1} className="emailBold">
+                customer2@gmail.com
+              </span>
+            </p>
+            <p>
+              password:{" "}
+              <span style={{ cursor: "copy" }} ref={uRef} onClick={handlepass}>
+                123456
+              </span>{" "}
+            </p>
+          </div>
         </div>
       </Col>
     </Row>
