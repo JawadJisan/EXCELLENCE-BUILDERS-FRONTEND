@@ -1,11 +1,11 @@
-import { axiosBaseQuery } from '@/helpers/axios/axiosBaseQuery';
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { getBaseUrl } from '../../helpers/config/envConfig';
-import { tagTypes } from '../tagTypes';
+import { axiosBaseQuery } from "@/helpers/axios/axiosBaseQuery";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { getBaseUrl } from "../../helpers/config/envConfig";
+import { tagTypes } from "../tagTypes";
 
 // Define a service using a base URL and expected endpoints
 export const baseApi = createApi({
-  reducerPath: 'api',
+  reducerPath: "api",
   baseQuery: axiosBaseQuery({ baseUrl: getBaseUrl() }),
   endpoints: (builder) => ({}),
   tagTypes: [
@@ -24,7 +24,7 @@ export const baseApi = createApi({
     tagTypes.blog,
     tagTypes.faq,
     tagTypes.notification,
-    'avService',
-    'rmService',
+    "avService",
+    "rmService",
   ],
 });

@@ -1,5 +1,3 @@
-//import Navbar from '@/components/ui/Navbar/Navbar';
-
 import dynamic from "next/dynamic";
 const Navbar = dynamic(() => import("@/components/ui/Navbar/Navbar"), {
   ssr: false,
