@@ -49,32 +49,46 @@ function Login() {
     } catch (error: any) {
       console.log(error);
       setErrorMessage(error.message);
-      message.error("something went wrong, try again");
+      message.error("Something went wrong, try again");
     }
   };
 
   const [copiedText, setCopiedText] = useState("");
-  const pRef = useRef(null);
-  const pRef1 = useRef(null);
-  const uRef = useRef(null);
+  const pRef = useRef<HTMLParagraphElement>(null); // Specify HTMLParagraphElement
+  const pRef1 = useRef<HTMLParagraphElement>(null); // Specify HTMLParagraphElement
+  const uRef = useRef<HTMLSpanElement>(null); // Added type for uRef
 
   const handleClick = () => {
-    const text = pRef.current.innerText;
-    navigator.clipboard.writeText(text);
-    setCopiedText(text);
-    message.success("Email copied!");
+    if (pRef.current) {
+      const text = pRef.current.innerText;
+      navigator.clipboard.writeText(text);
+      setCopiedText(text);
+      message.success("Email copied!");
+    } else {
+      console.error("pRef.current is null");
+    }
   };
+
   const handleClick1 = () => {
-    const text = pRef1.current.innerText;
-    navigator.clipboard.writeText(text);
-    setCopiedText(text);
-    message.success("Email copied!");
+    if (pRef1.current) {
+      const text = pRef1.current.innerText;
+      navigator.clipboard.writeText(text);
+      setCopiedText(text);
+      message.success("Email copied!");
+    } else {
+      console.error("pRef1.current is null");
+    }
   };
-  const handlepass = () => {
-    const text = uRef.current.innerText;
-    navigator.clipboard.writeText(text);
-    setCopiedText(text);
-    message.success("Password copied!");
+
+  const handlePass = () => {
+    if (uRef.current) {
+      const text = uRef.current.innerText;
+      navigator.clipboard.writeText(text);
+      setCopiedText(text);
+      message.success("Password copied!");
+    } else {
+      console.error("uRef.current is null");
+    }
   };
 
   return (
@@ -87,7 +101,7 @@ function Login() {
         className=" bg-teal-50 p-8 rounded-md"
       >
         <h1 className=" text-center text-xl md:text-2xl lg:text-4xl text-teal-900 font-bold mb-8 capitalize">
-          Login first before get the service from Excellience Builders
+          Login first before getting service from Excellience Builders
         </h1>
         <div>
           <Form submitHandler={onSubmit} resolver={yupResolver(loginSchema)}>
@@ -100,11 +114,7 @@ function Login() {
                 required
               />
             </div>
-            <div
-              style={{
-                margin: "15px 0px",
-              }}
-            >
+            <div style={{ margin: "15px 0px" }}>
               <FormInput
                 type="password"
                 size="large"
@@ -115,7 +125,7 @@ function Login() {
             </div>
             <button
               type="submit"
-              className=" w-full py-2 rounded-md text-white text-lg bg-hcOrange-base"
+              className="w-full py-2 rounded-md text-white text-lg bg-hcOrange-base"
               disabled={isLoading}
             >
               {isLoading ? "Please wait a moment..." : "Login"}
@@ -138,10 +148,10 @@ function Login() {
               </span>
             </p>
             <p>
-              password:{" "}
-              <span style={{ cursor: "copy" }} ref={uRef} onClick={handlepass}>
+              Password:{" "}
+              <span style={{ cursor: "copy" }} ref={uRef} onClick={handlePass}>
                 123456
-              </span>{" "}
+              </span>
             </p>
           </div>
           <div>
@@ -153,10 +163,10 @@ function Login() {
               </span>
             </p>
             <p>
-              password:{" "}
-              <span style={{ cursor: "copy" }} ref={uRef} onClick={handlepass}>
+              Password:{" "}
+              <span style={{ cursor: "copy" }} ref={uRef} onClick={handlePass}>
                 123456
-              </span>{" "}
+              </span>
             </p>
           </div>
         </div>
